@@ -7,5 +7,7 @@ abstract class AuthRepository extends ChangeNotifier {
 
   Future<void> login({required String email, required String password});
 
+  Future<void> loginApi({required String apiKey});
+
   Future<void> logout();
 }

@@ -1,6 +1,9 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "apiKey": "API-Key",
+  "login": "Login",
+  "home": "Home",
+  "trainings": "Trainings",
+  "recording": "Recording",
+  "statistics": "Statistics",
+  "settings": "Settings"
 }

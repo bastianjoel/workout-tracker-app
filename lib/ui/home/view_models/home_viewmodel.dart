@@ -1,15 +1,13 @@
 import 'package:workout_tracker_app/data/repositories/auth/auth_repository.dart';
 
-class LoginViewModel {
-  LoginViewModel({
+class HomeViewModel {
+  HomeViewModel({
     required AuthRepository authRepository 
   }) : _authRepository = authRepository;
 
   final AuthRepository _authRepository;
 
-  Future<void> loginApi({
-    required String apiKey,
-  }) async {
-    await _authRepository.loginApi(apiKey: apiKey);
+  Future<void> logout() async {
+    await _authRepository.logout();
   }
 }
