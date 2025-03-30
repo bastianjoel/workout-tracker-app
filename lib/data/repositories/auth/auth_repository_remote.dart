@@ -1,3 +1,4 @@
+import 'package:result_dart/result_dart.dart';
 import 'package:workout_tracker_app/data/services/shared_preferences_service.dart';
 
 import 'auth_repository.dart';
@@ -26,27 +27,42 @@ class AuthRepositoryRemote extends AuthRepository {
   }
 
   @override
-  Future<void> loginApi({
+  Future<Result<void>> loginApi({
     required String apiKey,
   }) async {
-    await _sharedPreferencesService.setApiKey(apiKey);
-    _isAuthenticated = true;
+    try {
+      await _sharedPreferencesService.setApiKey(apiKey);
+      _isAuthenticated = true;
+      return Success(0);
+    } on Exception catch (e) {
+      return Failure(e);
+    }
   }
 
   @override
-  Future<void> login({
+  Future<Result<void>> login({
     required String email,
     required String password,
   }) async {
-    // Simulate a network request
-    await Future.delayed(const Duration(seconds: 1));
+    try {
+      // Simulate a network request
+      await Future.delayed(const Duration(seconds: 1));
 
-    _isAuthenticated = true;
+      _isAuthenticated = true;
+      return Success(0);
+    } on Exception catch (e) {
+      return Failure(e);
+    }
   }
 
   @override
-  Future<void> logout() async {
-    await _sharedPreferencesService.setApiKey(null);
-    _isAuthenticated = false;
+  Future<Result<void>> logout() async {
+    try {
+      await _sharedPreferencesService.setApiKey(null);
+      _isAuthenticated = false;
+      return Success(0);
+    } on Exception catch (e) {
+      return Failure(e);
+    }
   }
 }

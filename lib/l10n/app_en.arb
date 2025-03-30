@@ -5,5 +5,6 @@
   "trainings": "Trainings",
   "recording": "Recording",
   "statistics": "Statistics",
-  "settings": "Settings"
+  "settings": "Settings",
+  "loginError": "Could not login"
 }

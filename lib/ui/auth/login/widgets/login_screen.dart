@@ -18,10 +18,24 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _apiKey = TextEditingController(
     text: '',
   );
+  
+  @override
+  void initState() {
+    super.initState();
+    widget.viewModel.loginApi.addListener(_onResult);
+  }
 
-  void _loginPressed() async {
-    await widget.viewModel.loginApi(apiKey: _apiKey.value.text);
-    context.go(Routes.home);
+  @override
+  void didUpdateWidget(covariant LoginScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    oldWidget.viewModel.loginApi.removeListener(_onResult);
+    widget.viewModel.loginApi.addListener(_onResult);
+  }
+
+  @override
+  void dispose() {
+    widget.viewModel.loginApi.removeListener(_onResult);
+    super.dispose();
   }
 
   @override
@@ -49,7 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 16),
                   FilledButton(
-                    onPressed: _loginPressed,
+                    onPressed: () => {
+                      widget.viewModel.loginApi.execute(_apiKey.value.text)
+                    },
                     child: Text(AppLocalizations.of(context)!.login),
                   )
                 ]
@@ -59,5 +75,20 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void _onResult() {
+    if (widget.viewModel.loginApi.value != null && widget.viewModel.loginApi.value!.isSuccess()) {
+      widget.viewModel.loginApi.clearErrors();
+      context.go(Routes.home);
+    }
+
+    if (widget.viewModel.loginApi.value != null && widget.viewModel.loginApi.value!.isError()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.loginError),
+        ),
+      );
+    }
   }
 }
