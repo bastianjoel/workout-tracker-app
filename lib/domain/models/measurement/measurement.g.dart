@@ -7,14 +7,14 @@ part of 'measurement.dart';
 // **************************************************************************
 
 _Measurement _$MeasurementFromJson(Map<String, dynamic> json) => _Measurement(
-      id: (json['id'] as num).toInt(),
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String,
-      steps: (json['steps'] as num).toDouble(),
-      userID: (json['userID'] as num).toInt(),
-      weight: (json['weight'] as num).toDouble(),
+      id: (json['id'] as num?)?.toInt(),
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      steps: (json['steps'] as num?)?.toDouble(),
+      userID: (json['userID'] as num?)?.toInt(),
+      weight: (json['weight'] as num?)?.toDouble(),
       date: json['date'] as String,
-      height: (json['height'] as num).toDouble(),
+      height: (json['height'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$MeasurementToJson(_Measurement instance) =>

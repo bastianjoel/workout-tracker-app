@@ -6,24 +6,24 @@ part 'measurement.g.dart';
 @freezed
 abstract class Measurement with _$Measurement {
   const factory Measurement({
-    required int id,
-    required String createdAt,
-    required String updatedAt,
+    int? id,
+    String? createdAt,
+    String? updatedAt,
 
     /* The number of steps taken */
-    required double steps,
+    required double? steps,
 
     /* The ID of the user who owns the workout */
-    required int userID,
+    int? userID,
 
     /* The weight of the user, in kilograms */
-    required double weight,
+    required double? weight,
 
-    /* The date of the measurement */
+    /* The date of the measurement (yyyy-mm-dd) */
     required String date,
 
     /* The height of the user, in centimeter */
-    required double height,
+    required double? height,
   }) = _Measurement;
 
 

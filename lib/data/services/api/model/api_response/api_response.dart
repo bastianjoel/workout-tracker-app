@@ -1,12 +1,19 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:result_dart/result_dart.dart';
 
-part 'api_response.freezed.dart';
-part 'api_response.g.dart';
+abstract class ApiResponse<T> {
+  static const String _jsonNodeResults = "results";
+  static const String _jsonNodeErrors = "errors";
 
-@Freezed(genericArgumentFactories: true)
-sealed class ApiResponse<T> with _$ApiResponse<T> {
-  const factory ApiResponse.results(T results) = ApiResponseResults;
-  const factory ApiResponse.errors(List<String> message) = ApiResponseErrors;
-
-  factory ApiResponse.fromJson(Map<String, dynamic> json, T Function(Object?) fromJsonT) => _$ApiResponseFromJson(json, fromJsonT);
+  static ResultDart<T, List<String>> fromJson<T extends Object, U>(
+    Map<String, dynamic> json,
+    T Function(U) mapper,
+  ) {
+    if (json[_jsonNodeErrors] != null) {
+      return Failure(json[_jsonNodeErrors] as List<String>);
+    } else if (json[_jsonNodeResults] != null) {
+      return Success(mapper(json[_jsonNodeResults]));
+    } else {
+      return Failure(["Invalid response"]);
+    }
+  }
 }

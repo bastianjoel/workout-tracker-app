@@ -15,14 +15,14 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Measurement {
-  int get id;
-  String get createdAt;
-  String get updatedAt; /* The number of steps taken */
-  double get steps; /* The ID of the user who owns the workout */
-  int get userID; /* The weight of the user, in kilograms */
-  double get weight; /* The date of the measurement */
+  int? get id;
+  String? get createdAt;
+  String? get updatedAt; /* The number of steps taken */
+  double? get steps; /* The ID of the user who owns the workout */
+  int? get userID; /* The weight of the user, in kilograms */
+  double? get weight; /* The date of the measurement (yyyy-mm-dd) */
   String get date; /* The height of the user, in centimeter */
-  double get height;
+  double? get height;
 
   /// Create a copy of Measurement
   /// with the given fields replaced by the non-null parameter values.
@@ -69,14 +69,14 @@ abstract mixin class $MeasurementCopyWith<$Res> {
       _$MeasurementCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
-      String createdAt,
-      String updatedAt,
-      double steps,
-      int userID,
-      double weight,
+      {int? id,
+      String? createdAt,
+      String? updatedAt,
+      double? steps,
+      int? userID,
+      double? weight,
       String date,
-      double height});
+      double? height});
 }
 
 /// @nodoc
@@ -91,48 +91,48 @@ class _$MeasurementCopyWithImpl<$Res> implements $MeasurementCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
-    Object? steps = null,
-    Object? userID = null,
-    Object? weight = null,
+    Object? id = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? steps = freezed,
+    Object? userID = freezed,
+    Object? weight = freezed,
     Object? date = null,
-    Object? height = null,
+    Object? height = freezed,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
+              as String?,
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      steps: null == steps
+              as String?,
+      steps: freezed == steps
           ? _self.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as double,
-      userID: null == userID
+              as double?,
+      userID: freezed == userID
           ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable
-              as int,
-      weight: null == weight
+              as int?,
+      weight: freezed == weight
           ? _self.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      height: null == height
+      height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -141,11 +141,11 @@ class _$MeasurementCopyWithImpl<$Res> implements $MeasurementCopyWith<$Res> {
 @JsonSerializable()
 class _Measurement implements Measurement {
   const _Measurement(
-      {required this.id,
-      required this.createdAt,
-      required this.updatedAt,
+      {this.id,
+      this.createdAt,
+      this.updatedAt,
       required this.steps,
-      required this.userID,
+      this.userID,
       required this.weight,
       required this.date,
       required this.height});
@@ -153,26 +153,26 @@ class _Measurement implements Measurement {
       _$MeasurementFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String createdAt;
+  final String? createdAt;
   @override
-  final String updatedAt;
+  final String? updatedAt;
 /* The number of steps taken */
   @override
-  final double steps;
+  final double? steps;
 /* The ID of the user who owns the workout */
   @override
-  final int userID;
+  final int? userID;
 /* The weight of the user, in kilograms */
   @override
-  final double weight;
-/* The date of the measurement */
+  final double? weight;
+/* The date of the measurement (yyyy-mm-dd) */
   @override
   final String date;
 /* The height of the user, in centimeter */
   @override
-  final double height;
+  final double? height;
 
   /// Create a copy of Measurement
   /// with the given fields replaced by the non-null parameter values.
@@ -226,14 +226,14 @@ abstract mixin class _$MeasurementCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String createdAt,
-      String updatedAt,
-      double steps,
-      int userID,
-      double weight,
+      {int? id,
+      String? createdAt,
+      String? updatedAt,
+      double? steps,
+      int? userID,
+      double? weight,
       String date,
-      double height});
+      double? height});
 }
 
 /// @nodoc
@@ -248,48 +248,48 @@ class __$MeasurementCopyWithImpl<$Res> implements _$MeasurementCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
-    Object? steps = null,
-    Object? userID = null,
-    Object? weight = null,
+    Object? id = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? steps = freezed,
+    Object? userID = freezed,
+    Object? weight = freezed,
     Object? date = null,
-    Object? height = null,
+    Object? height = freezed,
   }) {
     return _then(_Measurement(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
+              as String?,
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      steps: null == steps
+              as String?,
+      steps: freezed == steps
           ? _self.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as double,
-      userID: null == userID
+              as double?,
+      userID: freezed == userID
           ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable
-              as int,
-      weight: null == weight
+              as int?,
+      weight: freezed == weight
           ? _self.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-      height: null == height
+      height: freezed == height
           ? _self.height
           : height // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
