@@ -26,7 +26,6 @@ abstract class Equipment with _$Equipment {
     required int userID,
   }) = _Equipment;
 
-
   factory Equipment.fromJson(Map<String, dynamic> json) =>
       _$EquipmentFromJson(json);
 }

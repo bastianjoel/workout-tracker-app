@@ -15,69 +15,66 @@ import '../ui/auth/login/widgets/login_screen.dart';
 import 'routes.dart';
 
 GoRouter router(AuthRepository authRepository) => GoRouter(
-  // debugLogDiagnostics: true,
-  initialLocation: Routes.home,
-  redirect: _redirect,
-  refreshListenable: authRepository,
-  routes: [
-    GoRoute(
-      path: Routes.login,
-      builder: (context, state) {
-        return LoginScreen(viewModel: LoginViewModel(authRepository: context.read()));
-      },
-    ),
-    StatefulShellRoute.indexedStack(
-      branches: [
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: Routes.home,
-            builder: (context, state) {
-              return HomeScreen(viewModel: HomeViewModel(
-                authRepository: context.read(),
-                measurementRepository: context.read()
-              ));
-            },
-          )
-        ]),
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: Routes.workouts,
-            builder: (context, state) {
-              return WorkoutListScreen();
-            }
-          ),
-        ]),
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: Routes.record,
-            builder: (context, state) {
-              return RecordingScreen();
-            }
-          ),
-        ]),
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: Routes.stats,
-            builder: (context, state) {
-              return StatisticOverviewScreen();
-            }
-          ),
-        ]),
-        StatefulShellBranch(routes: [
-          GoRoute(
-            path: Routes.settings,
-            builder: (context, state) {
-              return SettingsScreen();
-            }
-          ),
-        ]),
+      // debugLogDiagnostics: true,
+      initialLocation: Routes.home,
+      redirect: _redirect,
+      refreshListenable: authRepository,
+      routes: [
+        GoRoute(
+          path: Routes.login,
+          builder: (context, state) {
+            return LoginScreen(
+                viewModel: LoginViewModel(authRepository: context.read()));
+          },
+        ),
+        StatefulShellRoute.indexedStack(
+          branches: [
+            StatefulShellBranch(routes: [
+              GoRoute(
+                path: Routes.home,
+                builder: (context, state) {
+                  return HomeScreen(
+                      viewModel: HomeViewModel(
+                          authRepository: context.read(),
+                          measurementRepository: context.read()));
+                },
+              )
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                  path: Routes.workouts,
+                  builder: (context, state) {
+                    return WorkoutListScreen();
+                  }),
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                  path: Routes.record,
+                  builder: (context, state) {
+                    return RecordingScreen();
+                  }),
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                  path: Routes.stats,
+                  builder: (context, state) {
+                    return StatisticOverviewScreen();
+                  }),
+            ]),
+            StatefulShellBranch(routes: [
+              GoRoute(
+                  path: Routes.settings,
+                  builder: (context, state) {
+                    return SettingsScreen();
+                  }),
+            ]),
+          ],
+          builder: (context, state, navigationShell) {
+            return MainScaffold(navigationShell);
+          },
+        ),
       ],
-      builder: (context, state, navigationShell) {
-        return MainScaffold(navigationShell);
-      },
-    ),
-  ],
-);
+    );
 
 Future<String?> _redirect(BuildContext context, GoRouterState state) async {
   final loggedIn = await context.read<AuthRepository>().isAuthenticated;

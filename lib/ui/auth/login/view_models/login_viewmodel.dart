@@ -3,10 +3,10 @@ import 'package:flutter_command/flutter_command.dart';
 import 'package:workout_tracker_app/data/repositories/auth/auth_repository.dart';
 
 class LoginViewModel {
-  LoginViewModel({
-    required AuthRepository authRepository 
-  }) : _authRepository = authRepository {
-    loginApi = Command.createAsync<String, Result<void>?>(_loginApi, initialValue: null);
+  LoginViewModel({required AuthRepository authRepository})
+      : _authRepository = authRepository {
+    loginApi = Command.createAsync<String, Result<void>?>(_loginApi,
+        initialValue: null);
   }
 
   final AuthRepository _authRepository;

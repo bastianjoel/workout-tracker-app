@@ -11,8 +11,8 @@ class ApiClient {
   ApiClient({
     String? base,
     HttpClient Function()? clientFactory,
-  }) : _base = base ?? 'https://wt.birne.dev',
-       _clientFactory = clientFactory ?? HttpClient.new;
+  })  : _base = base ?? 'https://wt.birne.dev',
+        _clientFactory = clientFactory ?? HttpClient.new;
 
   final String _base;
   final HttpClient Function() _clientFactory;
@@ -38,7 +38,10 @@ class ApiClient {
       final response = await request.close();
       if (response.statusCode == 200) {
         final stringData = await response.transform(utf8.decoder).join();
-        final apiResponse = ApiResponse.fromJson<List<Measurement>, List<dynamic>>(jsonDecode(stringData), (json) => json.map((e) => Measurement.fromJson(e)).toList());
+        final apiResponse =
+            ApiResponse.fromJson<List<Measurement>, List<dynamic>>(
+                jsonDecode(stringData),
+                (json) => json.map((e) => Measurement.fromJson(e)).toList());
         try {
           final data = apiResponse.getOrThrow();
           return Success(data);
@@ -55,7 +58,8 @@ class ApiClient {
     }
   }
 
-  Future<Result<void>> setSteps({required int steps, required String date}) async {
+  Future<Result<void>> setSteps(
+      {required int steps, required String date}) async {
     final client = _clientFactory();
     try {
       final request = await client.postUrl(Uri.parse('$_base/api/v1/daily'));

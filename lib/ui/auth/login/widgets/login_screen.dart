@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _apiKey = TextEditingController(
     text: '',
   );
-  
+
   @override
   void initState() {
     super.initState();
@@ -47,30 +47,28 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TextField(
-                    controller: _apiKey,
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: AppLocalizations.of(context)!.apiKey,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  FilledButton(
-                    onPressed: () => {
-                      widget.viewModel.loginApi.execute(_apiKey.value.text)
-                    },
-                    child: Text(AppLocalizations.of(context)!.login),
-                  )
-                ]
-              )
-            )
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      TextField(
+                        controller: _apiKey,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: AppLocalizations.of(context)!.apiKey,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      FilledButton(
+                        onPressed: () => {
+                          widget.viewModel.loginApi.execute(_apiKey.value.text)
+                        },
+                        child: Text(AppLocalizations.of(context)!.login),
+                      )
+                    ]))
           ],
         ),
       ),
@@ -78,12 +76,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onResult() {
-    if (widget.viewModel.loginApi.value != null && widget.viewModel.loginApi.value!.isSuccess()) {
+    if (widget.viewModel.loginApi.value != null &&
+        widget.viewModel.loginApi.value!.isSuccess()) {
       widget.viewModel.loginApi.clearErrors();
       context.go(Routes.home);
     }
 
-    if (widget.viewModel.loginApi.value != null && widget.viewModel.loginApi.value!.isError()) {
+    if (widget.viewModel.loginApi.value != null &&
+        widget.viewModel.loginApi.value!.isError()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(AppLocalizations.of(context)!.loginError),

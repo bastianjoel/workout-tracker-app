@@ -33,26 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ListenableBuilder(
-          listenable: widget.viewModel,
-          builder: (context, child) => Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text("Height: ${widget.viewModel.height}"),
-                    Text("Steps: ${widget.viewModel.todaySteps}"),
-                  ]
-                )
-              )
-            ]
-          )
-        )
-      ),
+          child: ListenableBuilder(
+              listenable: widget.viewModel,
+              builder: (context, child) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Text("Height: ${widget.viewModel.height}"),
+                                  Text("Steps: ${widget.viewModel.todaySteps}"),
+                                ]))
+                      ]))),
     );
   }
 }

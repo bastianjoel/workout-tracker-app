@@ -6,7 +6,8 @@ class StatisticOverviewScreen extends StatefulWidget {
   // final StatisticOverviewViewModel viewModel;
 
   @override
-  State<StatisticOverviewScreen> createState() => _StatisticOverviewScreenState();
+  State<StatisticOverviewScreen> createState() =>
+      _StatisticOverviewScreenState();
 }
 
 class _StatisticOverviewScreenState extends State<StatisticOverviewScreen> {

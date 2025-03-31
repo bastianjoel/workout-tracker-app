@@ -26,6 +26,6 @@ abstract class Measurement with _$Measurement {
     required double? height,
   }) = _Measurement;
 
-
-  factory Measurement.fromJson(Map<String, dynamic> json) => _$MeasurementFromJson(json);
+  factory Measurement.fromJson(Map<String, dynamic> json) =>
+      _$MeasurementFromJson(json);
 }

@@ -23,7 +23,9 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
     }
 
     final measurement = _cachedMeasurements!.firstWhere(
-      (element) => element.date.substring(0, 10) == date.toIso8601String().substring(0, 10),
+      (element) =>
+          element.date.substring(0, 10) ==
+          date.toIso8601String().substring(0, 10),
       orElse: () => Measurement(
         date: date.toIso8601String().substring(0, 10),
         weight: null,
@@ -64,4 +66,3 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
     return Success(0);
   }
 }
-

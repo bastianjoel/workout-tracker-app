@@ -14,10 +14,14 @@ List<SingleChildWidget> get providersRemote {
   return [
     Provider(create: (context) => ApiClient()),
     Provider(create: (context) => SharedPreferencesService()),
-    ChangeNotifierProvider(create: (context) => AuthRepositoryRemote(
-      apiClient: context.read(),
-      sharedPreferencesService: context.read(),
-    ) as AuthRepository),
-    Provider(create: (context) => MeasurementRepositoryRemote(apiClient: context.read()) as MeasurementRepository)
+    ChangeNotifierProvider(
+        create: (context) => AuthRepositoryRemote(
+              apiClient: context.read(),
+              sharedPreferencesService: context.read(),
+            ) as AuthRepository),
+    Provider(
+        create: (context) =>
+            MeasurementRepositoryRemote(apiClient: context.read())
+                as MeasurementRepository)
   ];
 }

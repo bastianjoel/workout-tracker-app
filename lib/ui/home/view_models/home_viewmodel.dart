@@ -13,7 +13,8 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel({
     required AuthRepository authRepository,
     required MeasurementRepository measurementRepository,
-  }) : _authRepository = authRepository, _measurementRepository = measurementRepository {
+  })  : _authRepository = authRepository,
+        _measurementRepository = measurementRepository {
     getTodayMeasurement = Command.createAsyncNoParam<Result<Measurement>?>(
       _getTodayMeasurement,
       initialValue: null,
@@ -29,7 +30,8 @@ class HomeViewModel extends ChangeNotifier {
   String todaySteps = 'x';
 
   Future<Result<Measurement>> _getTodayMeasurement() async {
-    final result = await _measurementRepository.getMeasurement(date: DateTime.now());
+    final result =
+        await _measurementRepository.getMeasurement(date: DateTime.now());
     final measurement = result.getOrNull();
     if (measurement != null) {
       height = measurement.height.toString();
@@ -38,7 +40,10 @@ class HomeViewModel extends ChangeNotifier {
     }
     notifyListeners();
 
-    DateTime startOfDay = DateTime.now().subtract(Duration(hours: DateTime.now().hour, minutes: DateTime.now().minute, seconds: DateTime.now().second));
+    DateTime startOfDay = DateTime.now().subtract(Duration(
+        hours: DateTime.now().hour,
+        minutes: DateTime.now().minute,
+        seconds: DateTime.now().second));
     DateTime endOfDay = startOfDay.add(Duration(days: 1));
 
     int steps = await Pedometer().getStepCount(from: startOfDay, to: endOfDay);
@@ -52,7 +57,8 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   Future<void> requestPermissions() async {
-    if (Platform.isAndroid && !(await Permission.activityRecognition.isGranted)) {
+    if (Platform.isAndroid &&
+        !(await Permission.activityRecognition.isGranted)) {
       await Permission.activityRecognition.request();
     } else if (Platform.isIOS && !(await Permission.sensors.isGranted)) {
       await Permission.sensors.request();
