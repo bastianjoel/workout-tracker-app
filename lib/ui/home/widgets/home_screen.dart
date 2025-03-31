@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
 
-import 'package:workout_tracker_app/routing/routes.dart';
 import 'package:workout_tracker_app/ui/home/view_models/home_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didUpdateWidget(covariant HomeScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
-    print('didUpdateWidget');
   }
 
   @override
@@ -36,19 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Workout Tracker'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              widget.viewModel.logout().then((_) {
-                context.go(Routes.login);
-              });
-            },
-          ),
-        ],
-      ),
       body: Center(
         child: ListenableBuilder(
           listenable: widget.viewModel,
@@ -69,30 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ]
           )
         )
-      ),
-      bottomNavigationBar: NavigationBar(
-        destinations: [
-          NavigationDestination(
-            icon: Icon(Icons.home),
-            label: AppLocalizations.of(context)!.home,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.fitness_center),
-            label: AppLocalizations.of(context)!.trainings,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.radio_button_checked),
-            label: AppLocalizations.of(context)!.recording,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bar_chart),
-            label: AppLocalizations.of(context)!.statistics,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.settings),
-            label: AppLocalizations.of(context)!.settings,
-          ),
-        ],
       ),
     );
   }
