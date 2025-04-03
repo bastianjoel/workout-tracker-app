@@ -8,6 +8,8 @@ import 'package:workout_tracker_app/ui/home/widgets/home_screen.dart';
 import 'package:workout_tracker_app/ui/recording/widgets/recording_screen.dart';
 import 'package:workout_tracker_app/ui/settings/widgets/settings_screen.dart';
 import 'package:workout_tracker_app/ui/statistic/overview/widgets/statistic_overview_screen.dart';
+import 'package:workout_tracker_app/ui/workout/detail/view_models/workout_detail_viewmodel.dart';
+import 'package:workout_tracker_app/ui/workout/detail/widgets/workout_detail_screen.dart';
 import 'package:workout_tracker_app/ui/workout/list/view_models/workout_list_viewmodel.dart';
 import 'package:workout_tracker_app/ui/workout/list/widgets/workout_list_screen.dart';
 
@@ -45,14 +47,32 @@ GoRouter router(AuthRepository authRepository) => GoRouter(
             ]),
             StatefulShellBranch(routes: [
               GoRoute(
-                  path: Routes.workouts,
-                  builder: (context, state) {
-                    return WorkoutListScreen(
-                      viewModel: WorkoutListViewModel(
+                path: Routes.workouts,
+                builder: (context, state) {
+                  return WorkoutListScreen(
+                    viewModel: WorkoutListViewModel(
+                      workoutRepository: context.read(),
+                    ),
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) {
+                      final id = int.parse(state.pathParameters['id']!);
+                      final workoutDetailViewModel = WorkoutDetailViewModel(
                         workoutRepository: context.read(),
-                      ),
-                    );
-                  }),
+                      );
+
+                      workoutDetailViewModel.loadWorkout.execute(id);
+
+                      return WorkoutDetailScreen(
+                        viewModel: workoutDetailViewModel,
+                      );
+                    },
+                  )
+                ],
+              ),
             ]),
             StatefulShellBranch(routes: [
               GoRoute(

@@ -26,8 +26,7 @@ List<SingleChildWidget> get providersRemote {
             MeasurementRepositoryRemote(apiClient: context.read())
                 as MeasurementRepository),
     Provider(
-        create: (context) =>
-            WorkoutRepositoryRemote(apiClient: context.read())
-                as WorkoutRepository)
+        create: (context) => WorkoutRepositoryRemote(apiClient: context.read())
+            as WorkoutRepository)
   ];
 }

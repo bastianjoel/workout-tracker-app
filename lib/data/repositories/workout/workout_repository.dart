@@ -5,6 +5,9 @@ abstract class WorkoutRepository {
   // Returns all [Workout]s
   Future<Result<List<Workout>>> getAll();
 
+  // Returns all [Workout]s
+  Future<Result<Workout>> getOne(int id);
+
   // Fetches the full [Workout] list from the server and updates the local cache
   Future<Result<void>> updateWorkouts();
 }

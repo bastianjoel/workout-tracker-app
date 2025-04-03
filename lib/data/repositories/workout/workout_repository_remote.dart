@@ -29,6 +29,17 @@ class WorkoutRepositoryRemote implements WorkoutRepository {
   }
 
   @override
+  Future<Result<Workout>> getOne(int id) async {
+    final result = await _apiClient.getWorkout(id);
+    try {
+      final response = result.getOrThrow();
+      return Success(response);
+    } on Exception catch (e) {
+      return Failure(e);
+    }
+  }
+
+  @override
   Future<Result<void>> updateWorkouts() async {
     final result = await _apiClient.getWorkouts();
     try {

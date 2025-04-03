@@ -88,10 +88,36 @@ class ApiClient {
       final response = await request.close();
       if (response.statusCode == 200) {
         final stringData = await response.transform(utf8.decoder).join();
-        final apiResponse =
-            ApiResponse.fromJson<List<Workout>, List<dynamic>>(
-                jsonDecode(stringData),
-                (json) => json.map((e) => Workout.fromJson(e)).toList());
+        final apiResponse = ApiResponse.fromJson<List<Workout>, List<dynamic>>(
+            jsonDecode(stringData),
+            (json) => json.map((e) => Workout.fromJson(e)).toList());
+        try {
+          final data = apiResponse.getOrThrow();
+          return Success(data);
+        } on Exception catch (e) {
+          return Failure(e);
+        }
+      } else {
+        return Failure(HttpException("Invalid response"));
+      }
+    } on Exception catch (e) {
+      return Failure(e);
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<Result<Workout>> getWorkout(int id) async {
+    final client = _clientFactory();
+    try {
+      final request =
+          await client.getUrl(Uri.parse('$_base/api/v1/workouts/$id'));
+      await _authHeader(request.headers);
+      final response = await request.close();
+      if (response.statusCode == 200) {
+        final stringData = await response.transform(utf8.decoder).join();
+        final apiResponse = ApiResponse.fromJson<Workout, dynamic>(
+            jsonDecode(stringData), (json) => Workout.fromJson(json));
         try {
           final data = apiResponse.getOrThrow();
           return Success(data);
