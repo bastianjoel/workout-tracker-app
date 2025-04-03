@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:workout_tracker_app/ui/workout/detail/view_models/workout_detail_viewmodel.dart';
@@ -79,30 +80,80 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
           ),
         ],
       ),
-      body: Center(
-        child: ListenableBuilder(
-          listenable: widget.viewModel.loadWorkout,
-          builder: (context, child) {
-            if (widget.viewModel.workout == null) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+      body: SingleChildScrollView(
+        child: Center(
+          child: ListenableBuilder(
+            listenable: widget.viewModel.loadWorkout,
+            builder: (context, child) {
+              if (widget.viewModel.workout == null) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-            final workout = widget.viewModel.workout!;
-            return Column(children: [
-              SizedBox(
-                height: 300,
-                child: mapController != null
-                    ? OSMFlutter(
-                        controller: mapController!, osmOption: OSMOption())
-                    : null,
-              ),
-              SizedBox(height: 20),
-              Text(workout.name!,
-                  style: Theme.of(context).textTheme.headlineMedium),
-            ]);
-          },
+              final workout = widget.viewModel.workout!;
+              return Column(children: [
+                SizedBox(
+                  height: 300,
+                  child: mapController != null
+                      ? OSMFlutter(
+                          controller: mapController!, osmOption: OSMOption())
+                      : null,
+                ),
+                SizedBox(height: 20),
+                Text(workout.name!,
+                    style: Theme.of(context).textTheme.headlineMedium),
+                SizedBox(
+                  height: 300,
+                  child: LineChart(
+                    LineChartData(
+                      gridData: FlGridData(show: false),
+                      titlesData: FlTitlesData(
+                        leftTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: true),
+                        ),
+                        bottomTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: true),
+                        ),
+                      ),
+                      borderData: FlBorderData(show: true),
+                      lineBarsData: [
+                        LineChartBarData(
+                          spots: workout.data!.details!.points
+                              .where((e) =>
+                                  e.distance != null &&
+                                  e.duration != null &&
+                                  e.distance! / (e.duration! / 1000000000) >=
+                                      1.0)
+                              .map((e) => FlSpot(
+                                  e.totalDistance!,
+                                  (e.distance! /
+                                              (e.duration! / 1000000000) *
+                                              3.6 *
+                                              10)
+                                          .roundToDouble() /
+                                      10))
+                              .toList(),
+                          isCurved: true,
+                          color: Colors.blue,
+                          belowBarData: BarAreaData(show: false),
+                        ),
+                        LineChartBarData(
+                          spots: workout.data!.details!.points
+                              .map(
+                                  (e) => FlSpot(e.totalDistance!, e.elevation!))
+                              .toList(),
+                          isCurved: true,
+                          color: Colors.green,
+                          belowBarData: BarAreaData(show: false),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ]);
+            },
+          ),
         ),
       ),
     );
