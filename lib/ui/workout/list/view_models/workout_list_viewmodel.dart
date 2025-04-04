@@ -30,4 +30,9 @@ class WorkoutListViewModel {
     _workouts = result.getOrThrow();
     return Success(0);
   }
+
+  Future<void> updateWorkouts() async {
+    await _workoutRepository.updateWorkouts();
+    await loadWorkouts.executeWithFuture();
+  }
 }

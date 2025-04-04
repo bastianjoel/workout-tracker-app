@@ -26,7 +26,10 @@ class _WorkoutListScreenState extends State<WorkoutListScreen> {
           ),
         ],
       ),
-      body: Center(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await widget.viewModel.updateWorkouts();
+        },
         child: ListenableBuilder(
           listenable: widget.viewModel.loadWorkouts,
           builder: (context, child) {
