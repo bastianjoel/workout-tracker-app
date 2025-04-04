@@ -114,49 +114,53 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
                     style: Theme.of(context).textTheme.headlineMedium),
                 SizedBox(
                   height: 300,
-                  child: LineChart(
-                    LineChartData(
-                      gridData: FlGridData(show: false),
-                      titlesData: FlTitlesData(
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                          axisNameWidget: const Text('Elevation (m)'),
-                        ),
-                        rightTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                          axisNameWidget: const Text('Speed (km/h)'),
-                        ),
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: true),
-                        ),
-                        topTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: false),
-                        ),
-                      ),
-                      borderData: FlBorderData(show: true),
-                      lineBarsData: [
-                        LineChartBarData(
-                          spots: workout.data!.details!.points
-                              .where((e) => e.speedInKmH >= 1.0)
-                              .map((e) => FlSpot(e.totalDistance, e.speedInKmH))
-                              .toList(),
-                          dotData: FlDotData(show: false),
-                          isCurved: true,
-                          color: Colors.blue,
-                          belowBarData: BarAreaData(show: false),
-                        ),
-                        LineChartBarData(
-                          spots: workout.data!.details!.points
-                              .map((e) => FlSpot(e.totalDistance, e.elevation))
-                              .toList(),
-                          dotData: FlDotData(show: false),
-                          isCurved: true,
-                          color: Colors.green,
-                          belowBarData: BarAreaData(show: false),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: workout.data!.details != null
+                      ? LineChart(
+                          LineChartData(
+                            gridData: FlGridData(show: false),
+                            titlesData: FlTitlesData(
+                              leftTitles: AxisTitles(
+                                sideTitles: SideTitles(showTitles: false),
+                                axisNameWidget: const Text('Elevation (m)'),
+                              ),
+                              rightTitles: AxisTitles(
+                                sideTitles: SideTitles(showTitles: false),
+                                axisNameWidget: const Text('Speed (km/h)'),
+                              ),
+                              bottomTitles: AxisTitles(
+                                sideTitles: SideTitles(showTitles: true),
+                              ),
+                              topTitles: AxisTitles(
+                                sideTitles: SideTitles(showTitles: false),
+                              ),
+                            ),
+                            borderData: FlBorderData(show: true),
+                            lineBarsData: [
+                              LineChartBarData(
+                                spots: workout.data!.details!.points
+                                    .where((e) => e.speedInKmH >= 1.0)
+                                    .map((e) =>
+                                        FlSpot(e.totalDistance, e.speedInKmH))
+                                    .toList(),
+                                dotData: FlDotData(show: false),
+                                isCurved: true,
+                                color: Colors.blue,
+                                belowBarData: BarAreaData(show: false),
+                              ),
+                              LineChartBarData(
+                                spots: workout.data!.details!.points
+                                    .map((e) =>
+                                        FlSpot(e.totalDistance, e.elevation))
+                                    .toList(),
+                                dotData: FlDotData(show: false),
+                                isCurved: true,
+                                color: Colors.green,
+                                belowBarData: BarAreaData(show: false),
+                              ),
+                            ],
+                          ),
+                        )
+                      : null,
                 )
               ]);
             },
