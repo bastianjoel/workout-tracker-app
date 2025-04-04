@@ -72,10 +72,19 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
       appBar: AppBar(
         title: const Text('Workout Detail'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.share),
-            onPressed: () {
-              // TODO: Implement share functionality
+          ListenableBuilder(
+            listenable: widget.viewModel.loadWorkout,
+            builder: (context, child) {
+              if (widget.viewModel.workout?.publicUUID == null) {
+                return const SizedBox.shrink();
+              }
+
+              return IconButton(
+                icon: const Icon(Icons.share),
+                onPressed: () {
+                  // TODO: Implement share functionality
+                },
+              );
             },
           ),
         ],
@@ -110,27 +119,28 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
                       gridData: FlGridData(show: false),
                       titlesData: FlTitlesData(
                         leftTitles: AxisTitles(
-                          sideTitles: SideTitles(showTitles: true),
+                          sideTitles: SideTitles(showTitles: false),
+                          axisNameWidget: const Text('Elevation (m)'),
+                        ),
+                        rightTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
+                          axisNameWidget: const Text('Speed (km/h)'),
                         ),
                         bottomTitles: AxisTitles(
                           sideTitles: SideTitles(showTitles: true),
+                        ),
+                        topTitles: AxisTitles(
+                          sideTitles: SideTitles(showTitles: false),
                         ),
                       ),
                       borderData: FlBorderData(show: true),
                       lineBarsData: [
                         LineChartBarData(
                           spots: workout.data!.details!.points
-                              .where((e) =>
-                                  e.distance / (e.duration / 1000000000) >= 1.0)
-                              .map((e) => FlSpot(
-                                  e.totalDistance,
-                                  (e.distance /
-                                              (e.duration / 1000000000) *
-                                              3.6 *
-                                              10)
-                                          .roundToDouble() /
-                                      10))
+                              .where((e) => e.speedInKmH >= 1.0)
+                              .map((e) => FlSpot(e.totalDistance, e.speedInKmH))
                               .toList(),
+                          dotData: FlDotData(show: false),
                           isCurved: true,
                           color: Colors.blue,
                           belowBarData: BarAreaData(show: false),
@@ -139,6 +149,7 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
                           spots: workout.data!.details!.points
                               .map((e) => FlSpot(e.totalDistance, e.elevation))
                               .toList(),
+                          dotData: FlDotData(show: false),
                           isCurved: true,
                           color: Colors.green,
                           belowBarData: BarAreaData(show: false),

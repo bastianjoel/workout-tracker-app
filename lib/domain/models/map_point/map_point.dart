@@ -5,6 +5,7 @@ part 'map_point.g.dart';
 
 @freezed
 abstract class MapPoint with _$MapPoint {
+  const MapPoint._();
   const factory MapPoint({
     /* The distance from the previous point */
     required double distance,
@@ -16,7 +17,7 @@ abstract class MapPoint with _$MapPoint {
     required double elevation,
 
     /* Extra metrics at this point */
-    // AllOfdatabaseMapPointExtraMetrics? extraMetrics,
+    @Default({}) Map<String, dynamic> extraMetrics,
 
     /* The latitude of the point */
     required double lat,
@@ -33,6 +34,9 @@ abstract class MapPoint with _$MapPoint {
     /* The total duration of the workout up to this point */
     required int totalDuration,
   }) = _MapPoint;
+
+  // Speed in km/h
+  double get speedInKmH => distance / (duration / 1000000000) * 3.6;
 
   factory MapPoint.fromJson(Map<String, dynamic> json) =>
       _$MapPointFromJson(json);

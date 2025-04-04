@@ -19,8 +19,7 @@ mixin _$MapPoint {
   double get distance; /* The duration from the previous point */
   int get duration; /* The elevation of the point */
   double get elevation; /* Extra metrics at this point */
-// AllOfdatabaseMapPointExtraMetrics? extraMetrics,
-/* The latitude of the point */
+  Map<String, dynamic> get extraMetrics; /* The latitude of the point */
   double get lat; /* The longitude of the point */
   double get lng; /* The time the point was recorded */
   DateTime get time; /* The total distance of the workout up to this point */
@@ -49,6 +48,8 @@ mixin _$MapPoint {
                 other.duration == duration) &&
             (identical(other.elevation, elevation) ||
                 other.elevation == elevation) &&
+            const DeepCollectionEquality()
+                .equals(other.extraMetrics, extraMetrics) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
             (identical(other.time, time) || other.time == time) &&
@@ -60,12 +61,21 @@ mixin _$MapPoint {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, distance, duration, elevation,
-      lat, lng, time, totalDistance, totalDuration);
+  int get hashCode => Object.hash(
+      runtimeType,
+      distance,
+      duration,
+      elevation,
+      const DeepCollectionEquality().hash(extraMetrics),
+      lat,
+      lng,
+      time,
+      totalDistance,
+      totalDuration);
 
   @override
   String toString() {
-    return 'MapPoint(distance: $distance, duration: $duration, elevation: $elevation, lat: $lat, lng: $lng, time: $time, totalDistance: $totalDistance, totalDuration: $totalDuration)';
+    return 'MapPoint(distance: $distance, duration: $duration, elevation: $elevation, extraMetrics: $extraMetrics, lat: $lat, lng: $lng, time: $time, totalDistance: $totalDistance, totalDuration: $totalDuration)';
   }
 }
 
@@ -78,6 +88,7 @@ abstract mixin class $MapPointCopyWith<$Res> {
       {double distance,
       int duration,
       double elevation,
+      Map<String, dynamic> extraMetrics,
       double lat,
       double lng,
       DateTime time,
@@ -100,6 +111,7 @@ class _$MapPointCopyWithImpl<$Res> implements $MapPointCopyWith<$Res> {
     Object? distance = null,
     Object? duration = null,
     Object? elevation = null,
+    Object? extraMetrics = null,
     Object? lat = null,
     Object? lng = null,
     Object? time = null,
@@ -119,6 +131,10 @@ class _$MapPointCopyWithImpl<$Res> implements $MapPointCopyWith<$Res> {
           ? _self.elevation
           : elevation // ignore: cast_nullable_to_non_nullable
               as double,
+      extraMetrics: null == extraMetrics
+          ? _self.extraMetrics
+          : extraMetrics // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       lat: null == lat
           ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
@@ -145,16 +161,19 @@ class _$MapPointCopyWithImpl<$Res> implements $MapPointCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class _MapPoint implements MapPoint {
+class _MapPoint extends MapPoint {
   const _MapPoint(
       {required this.distance,
       required this.duration,
       required this.elevation,
+      final Map<String, dynamic> extraMetrics = const {},
       required this.lat,
       required this.lng,
       required this.time,
       required this.totalDistance,
-      required this.totalDuration});
+      required this.totalDuration})
+      : _extraMetrics = extraMetrics,
+        super._();
   factory _MapPoint.fromJson(Map<String, dynamic> json) =>
       _$MapPointFromJson(json);
 
@@ -168,7 +187,16 @@ class _MapPoint implements MapPoint {
   @override
   final double elevation;
 /* Extra metrics at this point */
-// AllOfdatabaseMapPointExtraMetrics? extraMetrics,
+  final Map<String, dynamic> _extraMetrics;
+/* Extra metrics at this point */
+  @override
+  @JsonKey()
+  Map<String, dynamic> get extraMetrics {
+    if (_extraMetrics is EqualUnmodifiableMapView) return _extraMetrics;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_extraMetrics);
+  }
+
 /* The latitude of the point */
   @override
   final double lat;
@@ -211,6 +239,8 @@ class _MapPoint implements MapPoint {
                 other.duration == duration) &&
             (identical(other.elevation, elevation) ||
                 other.elevation == elevation) &&
+            const DeepCollectionEquality()
+                .equals(other._extraMetrics, _extraMetrics) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.lng, lng) || other.lng == lng) &&
             (identical(other.time, time) || other.time == time) &&
@@ -222,12 +252,21 @@ class _MapPoint implements MapPoint {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, distance, duration, elevation,
-      lat, lng, time, totalDistance, totalDuration);
+  int get hashCode => Object.hash(
+      runtimeType,
+      distance,
+      duration,
+      elevation,
+      const DeepCollectionEquality().hash(_extraMetrics),
+      lat,
+      lng,
+      time,
+      totalDistance,
+      totalDuration);
 
   @override
   String toString() {
-    return 'MapPoint(distance: $distance, duration: $duration, elevation: $elevation, lat: $lat, lng: $lng, time: $time, totalDistance: $totalDistance, totalDuration: $totalDuration)';
+    return 'MapPoint(distance: $distance, duration: $duration, elevation: $elevation, extraMetrics: $extraMetrics, lat: $lat, lng: $lng, time: $time, totalDistance: $totalDistance, totalDuration: $totalDuration)';
   }
 }
 
@@ -242,6 +281,7 @@ abstract mixin class _$MapPointCopyWith<$Res>
       {double distance,
       int duration,
       double elevation,
+      Map<String, dynamic> extraMetrics,
       double lat,
       double lng,
       DateTime time,
@@ -264,6 +304,7 @@ class __$MapPointCopyWithImpl<$Res> implements _$MapPointCopyWith<$Res> {
     Object? distance = null,
     Object? duration = null,
     Object? elevation = null,
+    Object? extraMetrics = null,
     Object? lat = null,
     Object? lng = null,
     Object? time = null,
@@ -283,6 +324,10 @@ class __$MapPointCopyWithImpl<$Res> implements _$MapPointCopyWith<$Res> {
           ? _self.elevation
           : elevation // ignore: cast_nullable_to_non_nullable
               as double,
+      extraMetrics: null == extraMetrics
+          ? _self._extraMetrics
+          : extraMetrics // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       lat: null == lat
           ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
