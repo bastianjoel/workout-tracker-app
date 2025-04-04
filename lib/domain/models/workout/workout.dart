@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:workout_tracker_app/domain/models/equipment/equipment.dart';
 import 'package:workout_tracker_app/domain/models/map_data/map_data.dart';
+import 'package:workout_tracker_app/domain/models/workout_type/workout_type.dart';
 
 part 'workout.freezed.dart';
 part 'workout.g.dart';
@@ -43,7 +44,7 @@ abstract class Workout with _$Workout {
     // List<DatabaseRouteSegmentMatch> routeSegmentMatches,
 
     /* The type of the workout */
-    required String type,
+    required WorkoutType type,
 
     /* The user who owns the workout */
     // AllOfdatabaseWorkoutUser user,

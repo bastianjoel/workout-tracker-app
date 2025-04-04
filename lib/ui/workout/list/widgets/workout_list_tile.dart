@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:intl/intl.dart';
 import 'package:workout_tracker_app/domain/models/workout/workout.dart';
 import 'package:workout_tracker_app/routing/routes.dart';
@@ -17,34 +16,17 @@ class WorkoutListTile extends StatelessWidget {
       leading: SizedBox(
         width: 60,
         height: 60,
-        child: FutureBuilder(
-            future: Future.delayed(Duration(seconds: 1)),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done) {
+        child: Builder(
+            builder: (context) {
+              if (workout.data == null) {
                 return const Center(
-                  child: Icon(Icons.sports_bar),
-                );
-              } else if (workout.data == null) {
-                return const Center(
-                  child: Icon(Icons.sports_bar),
+                  child: Icon(Icons.error),
                 );
               } else {
-                return const Center(
-                  child: Icon(Icons.sports_bar),
+                return Center(
+                  child: Icon(workout.type.icon),
                 );
               }
-
-              return OSMViewer(
-                controller: SimpleMapController(
-                  initPosition: GeoPoint(
-                    latitude: workout.data!.center.lat,
-                    longitude: workout.data!.center.lng,
-                  ),
-                  markerHome: const MarkerIcon(icon: Icon(null)),
-                ),
-                zoomOption: const ZoomOption(
-                    initZoom: 8, minZoomLevel: 8, maxZoomLevel: 8),
-              );
             }),
       ),
       title: Text(workout.name),

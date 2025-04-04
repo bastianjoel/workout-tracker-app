@@ -23,7 +23,7 @@ _Workout _$WorkoutFromJson(Map<String, dynamic> json) => _Workout(
       name: json['name'] as String,
       notes: json['notes'] as String? ?? '',
       publicUUID: json['publicUUID'] as String?,
-      type: json['type'] as String,
+      type: WorkoutType.fromJson(json['type']),
     );
 
 Map<String, dynamic> _$WorkoutToJson(_Workout instance) => <String, dynamic>{

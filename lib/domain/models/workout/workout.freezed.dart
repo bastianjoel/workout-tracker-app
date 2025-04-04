@@ -32,7 +32,7 @@ mixin _$Workout {
   String? get publicUUID; /* Which route segments match */
 // List<DatabaseRouteSegmentMatch> routeSegmentMatches,
 /* The type of the workout */
-  String get type;
+  WorkoutType get type;
 
   /// Create a copy of Workout
   /// with the given fields replaced by the non-null parameter values.
@@ -106,7 +106,7 @@ abstract mixin class $WorkoutCopyWith<$Res> {
       String name,
       String notes,
       String? publicUUID,
-      String type});
+      WorkoutType type});
 
   $MapDataCopyWith<$Res>? get data;
 }
@@ -184,7 +184,7 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
       type: null == type
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkoutType,
     ));
   }
 
@@ -268,7 +268,7 @@ class _Workout implements Workout {
 // List<DatabaseRouteSegmentMatch> routeSegmentMatches,
 /* The type of the workout */
   @override
-  final String type;
+  final WorkoutType type;
 
   /// Create a copy of Workout
   /// with the given fields replaced by the non-null parameter values.
@@ -349,7 +349,7 @@ abstract mixin class _$WorkoutCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
       String name,
       String notes,
       String? publicUUID,
-      String type});
+      WorkoutType type});
 
   @override
   $MapDataCopyWith<$Res>? get data;
@@ -428,7 +428,7 @@ class __$WorkoutCopyWithImpl<$Res> implements _$WorkoutCopyWith<$Res> {
       type: null == type
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as WorkoutType,
     ));
   }
 
