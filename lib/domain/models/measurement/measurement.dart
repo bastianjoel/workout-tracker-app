@@ -11,7 +11,7 @@ abstract class Measurement with _$Measurement {
     String? updatedAt,
 
     /* The number of steps taken */
-    required double? steps,
+    @Default(0) double steps,
 
     /* The ID of the user who owns the workout */
     int? userID,

@@ -7,9 +7,9 @@ part of 'map_center.dart';
 // **************************************************************************
 
 _MapCenter _$MapCenterFromJson(Map<String, dynamic> json) => _MapCenter(
-      lat: (json['lat'] as num?)?.toDouble(),
-      lng: (json['lng'] as num?)?.toDouble(),
-      tz: json['tz'] as String?,
+      lat: (json['lat'] as num).toDouble(),
+      lng: (json['lng'] as num).toDouble(),
+      tz: json['tz'] as String,
     );
 
 Map<String, dynamic> _$MapCenterToJson(_MapCenter instance) =>

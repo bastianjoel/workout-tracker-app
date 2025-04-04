@@ -6,18 +6,18 @@ part 'equipment.g.dart';
 @freezed
 abstract class Equipment with _$Equipment {
   const factory Equipment({
-    required int id,
-    required String createdAt,
-    required String updatedAt,
+    int? id,
+    String? createdAt,
+    String? updatedAt,
 
     /* Whether this equipment is active */
-    required String active,
+    required bool active,
 
     /* Which workout types to add this equipment by default */
     // required List<DatabaseWorkoutType> defaultFor,
 
     /* More information about the equipment */
-    required String description,
+    @Default('') String description,
 
     /* The name of the gear */
     required String name,

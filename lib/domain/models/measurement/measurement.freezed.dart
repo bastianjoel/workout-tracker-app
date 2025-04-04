@@ -18,7 +18,7 @@ mixin _$Measurement {
   int? get id;
   String? get createdAt;
   String? get updatedAt; /* The number of steps taken */
-  double? get steps; /* The ID of the user who owns the workout */
+  double get steps; /* The ID of the user who owns the workout */
   int? get userID; /* The weight of the user, in kilograms */
   double? get weight; /* The date of the measurement (yyyy-mm-dd) */
   String get date; /* The height of the user, in centimeter */
@@ -72,7 +72,7 @@ abstract mixin class $MeasurementCopyWith<$Res> {
       {int? id,
       String? createdAt,
       String? updatedAt,
-      double? steps,
+      double steps,
       int? userID,
       double? weight,
       String date,
@@ -94,7 +94,7 @@ class _$MeasurementCopyWithImpl<$Res> implements $MeasurementCopyWith<$Res> {
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? steps = freezed,
+    Object? steps = null,
     Object? userID = freezed,
     Object? weight = freezed,
     Object? date = null,
@@ -113,10 +113,10 @@ class _$MeasurementCopyWithImpl<$Res> implements $MeasurementCopyWith<$Res> {
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      steps: freezed == steps
+      steps: null == steps
           ? _self.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       userID: freezed == userID
           ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class _Measurement implements Measurement {
       {this.id,
       this.createdAt,
       this.updatedAt,
-      required this.steps,
+      this.steps = 0,
       this.userID,
       required this.weight,
       required this.date,
@@ -160,7 +160,8 @@ class _Measurement implements Measurement {
   final String? updatedAt;
 /* The number of steps taken */
   @override
-  final double? steps;
+  @JsonKey()
+  final double steps;
 /* The ID of the user who owns the workout */
   @override
   final int? userID;
@@ -229,7 +230,7 @@ abstract mixin class _$MeasurementCopyWith<$Res>
       {int? id,
       String? createdAt,
       String? updatedAt,
-      double? steps,
+      double steps,
       int? userID,
       double? weight,
       String date,
@@ -251,7 +252,7 @@ class __$MeasurementCopyWithImpl<$Res> implements _$MeasurementCopyWith<$Res> {
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? steps = freezed,
+    Object? steps = null,
     Object? userID = freezed,
     Object? weight = freezed,
     Object? date = null,
@@ -270,10 +271,10 @@ class __$MeasurementCopyWithImpl<$Res> implements _$MeasurementCopyWith<$Res> {
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      steps: freezed == steps
+      steps: null == steps
           ? _self.steps
           : steps // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       userID: freezed == userID
           ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable

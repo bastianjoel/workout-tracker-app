@@ -18,7 +18,7 @@ mixin _$MapDataDetails {
   int? get id;
   String? get createdAt;
   String? get updatedAt; /* The ID of the map data these details belong to */
-  int? get mapDataID; /* The GPS points of the workout */
+  int get mapDataID; /* The GPS points of the workout */
   List<MapPoint> get points;
 
   /// Create a copy of MapDataDetails
@@ -68,7 +68,7 @@ abstract mixin class $MapDataDetailsCopyWith<$Res> {
       {int? id,
       String? createdAt,
       String? updatedAt,
-      int? mapDataID,
+      int mapDataID,
       List<MapPoint> points});
 }
 
@@ -88,7 +88,7 @@ class _$MapDataDetailsCopyWithImpl<$Res>
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? mapDataID = freezed,
+    Object? mapDataID = null,
     Object? points = null,
   }) {
     return _then(_self.copyWith(
@@ -104,10 +104,10 @@ class _$MapDataDetailsCopyWithImpl<$Res>
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      mapDataID: freezed == mapDataID
+      mapDataID: null == mapDataID
           ? _self.mapDataID
           : mapDataID // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       points: null == points
           ? _self.points
           : points // ignore: cast_nullable_to_non_nullable
@@ -123,7 +123,7 @@ class _MapDataDetails implements MapDataDetails {
       {this.id,
       this.createdAt,
       this.updatedAt,
-      this.mapDataID,
+      required this.mapDataID,
       final List<MapPoint> points = const []})
       : _points = points;
   factory _MapDataDetails.fromJson(Map<String, dynamic> json) =>
@@ -137,7 +137,7 @@ class _MapDataDetails implements MapDataDetails {
   final String? updatedAt;
 /* The ID of the map data these details belong to */
   @override
-  final int? mapDataID;
+  final int mapDataID;
 /* The GPS points of the workout */
   final List<MapPoint> _points;
 /* The GPS points of the workout */
@@ -202,7 +202,7 @@ abstract mixin class _$MapDataDetailsCopyWith<$Res>
       {int? id,
       String? createdAt,
       String? updatedAt,
-      int? mapDataID,
+      int mapDataID,
       List<MapPoint> points});
 }
 
@@ -222,7 +222,7 @@ class __$MapDataDetailsCopyWithImpl<$Res>
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? mapDataID = freezed,
+    Object? mapDataID = null,
     Object? points = null,
   }) {
     return _then(_MapDataDetails(
@@ -238,10 +238,10 @@ class __$MapDataDetailsCopyWithImpl<$Res>
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      mapDataID: freezed == mapDataID
+      mapDataID: null == mapDataID
           ? _self.mapDataID
           : mapDataID // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       points: null == points
           ? _self._points
           : points // ignore: cast_nullable_to_non_nullable

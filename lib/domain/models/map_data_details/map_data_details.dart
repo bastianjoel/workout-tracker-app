@@ -12,7 +12,7 @@ abstract class MapDataDetails with _$MapDataDetails {
     String? updatedAt,
 
     /* The ID of the map data these details belong to */
-    int? mapDataID,
+    required int mapDataID,
 
     /* The GPS points of the workout */
     @Default([]) List<MapPoint> points,

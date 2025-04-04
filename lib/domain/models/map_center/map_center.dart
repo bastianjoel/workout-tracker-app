@@ -7,13 +7,13 @@ part 'map_center.g.dart';
 abstract class MapCenter with _$MapCenter {
   const factory MapCenter({
     /* Latitude */
-    double? lat,
+    required double lat,
 
     /* Longitude */
-    double? lng,
+    required double lng,
 
     /* Timezone */
-    String? tz,
+    required String tz,
   }) = _MapCenter;
 
   factory MapCenter.fromJson(Map<String, dynamic> json) =>

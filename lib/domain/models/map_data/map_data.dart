@@ -16,70 +16,70 @@ abstract class MapData with _$MapData {
     // AllOfdatabaseMapDataAddress? address,
 
     /* The generic location of the workout */
-    String? addressString,
+    required String addressString,
 
     /* The average speed of the workout */
-    double? averageSpeed,
+    @Default(0) double averageSpeed,
 
     /* The average speed of the workout without pausing */
-    double? averageSpeedNoPause,
+    @Default(0) double averageSpeedNoPause,
 
     /* The center of the workout (in coordinates) */
-    MapCenter? center,
+    required MapCenter center,
 
     /* The tool that created this workout */
-    String? creator,
+    required String creator,
 
     /* The details of the workout */
     MapDataDetails? details,
 
     /* Extra metrcis available */
-    List<String>? extraMetrics,
+    @Default([]) List<String> extraMetrics,
 
     /* The maximum elevation of the workout */
-    double? maxElevation,
+    @Default(0) double maxElevation,
 
     /* The maximum speed of the workout */
-    double? maxSpeed,
+    @Default(0) double maxSpeed,
 
     /* The minimum elevation of the workout */
-    double? minElevation,
+    @Default(0) double minElevation,
 
     /* The name of the workout */
-    String? name,
+    @Default('') String name,
 
     /* The total pause duration of the workout */
-    int? pauseDuration,
+    @Default(0) int pauseDuration,
 
     /* The start time of the workout */
-    String? start,
+    required DateTime start,
 
     /* The stop time of the workout */
-    String? stop,
+    required DateTime stop,
 
     /* The total distance of the workout */
-    double? totalDistance,
+    @Default(0) double totalDistance,
 
     /* The total distance down of the workout */
-    double? totalDown,
+    @Default(0) double totalDown,
 
     /* The total duration of the workout */
-    int? totalDuration,
+    @Default(0) int totalDuration,
 
     /* The number of repetitions of the workout */
-    int? totalRepetitions,
+    @Default(0) int totalRepetitions,
 
     /* The total distance up of the workout */
-    double? totalUp,
+    @Default(0) double totalUp,
 
     /* The weight of the workout */
-    double? totalWeight,
+    @Default(0) double totalWeight,
 
     /* The type of the workout */
-    String? type,
+    required String type,
 
     /* The workout this data belongs to */
-    int? workoutID,
+    required int workoutID,
   }) = _MapData;
 
   factory MapData.fromJson(Map<String, dynamic> json) =>

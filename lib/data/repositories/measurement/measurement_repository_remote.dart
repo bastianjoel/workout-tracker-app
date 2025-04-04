@@ -30,7 +30,6 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
         date: date.toIso8601String().substring(0, 10),
         weight: null,
         height: null,
-        steps: null,
       ),
     );
 

@@ -20,30 +20,30 @@ mixin _$MapData {
   String? get updatedAt; /* The address of the workout */
 // AllOfdatabaseMapDataAddress? address,
 /* The generic location of the workout */
-  String? get addressString; /* The average speed of the workout */
-  double?
+  String get addressString; /* The average speed of the workout */
+  double
       get averageSpeed; /* The average speed of the workout without pausing */
-  double?
+  double
       get averageSpeedNoPause; /* The center of the workout (in coordinates) */
-  MapCenter? get center; /* The tool that created this workout */
-  String? get creator; /* The details of the workout */
+  MapCenter get center; /* The tool that created this workout */
+  String get creator; /* The details of the workout */
   MapDataDetails? get details; /* Extra metrcis available */
-  List<String>? get extraMetrics; /* The maximum elevation of the workout */
-  double? get maxElevation; /* The maximum speed of the workout */
-  double? get maxSpeed; /* The minimum elevation of the workout */
-  double? get minElevation; /* The name of the workout */
-  String? get name; /* The total pause duration of the workout */
-  int? get pauseDuration; /* The start time of the workout */
-  String? get start; /* The stop time of the workout */
-  String? get stop; /* The total distance of the workout */
-  double? get totalDistance; /* The total distance down of the workout */
-  double? get totalDown; /* The total duration of the workout */
-  int? get totalDuration; /* The number of repetitions of the workout */
-  int? get totalRepetitions; /* The total distance up of the workout */
-  double? get totalUp; /* The weight of the workout */
-  double? get totalWeight; /* The type of the workout */
-  String? get type; /* The workout this data belongs to */
-  int? get workoutID;
+  List<String> get extraMetrics; /* The maximum elevation of the workout */
+  double get maxElevation; /* The maximum speed of the workout */
+  double get maxSpeed; /* The minimum elevation of the workout */
+  double get minElevation; /* The name of the workout */
+  String get name; /* The total pause duration of the workout */
+  int get pauseDuration; /* The start time of the workout */
+  DateTime get start; /* The stop time of the workout */
+  DateTime get stop; /* The total distance of the workout */
+  double get totalDistance; /* The total distance down of the workout */
+  double get totalDown; /* The total duration of the workout */
+  int get totalDuration; /* The number of repetitions of the workout */
+  int get totalRepetitions; /* The total distance up of the workout */
+  double get totalUp; /* The weight of the workout */
+  double get totalWeight; /* The type of the workout */
+  String get type; /* The workout this data belongs to */
+  int get workoutID;
 
   /// Create a copy of MapData
   /// with the given fields replaced by the non-null parameter values.
@@ -149,30 +149,30 @@ abstract mixin class $MapDataCopyWith<$Res> {
       {int? id,
       String? createdAt,
       String? updatedAt,
-      String? addressString,
-      double? averageSpeed,
-      double? averageSpeedNoPause,
-      MapCenter? center,
-      String? creator,
+      String addressString,
+      double averageSpeed,
+      double averageSpeedNoPause,
+      MapCenter center,
+      String creator,
       MapDataDetails? details,
-      List<String>? extraMetrics,
-      double? maxElevation,
-      double? maxSpeed,
-      double? minElevation,
-      String? name,
-      int? pauseDuration,
-      String? start,
-      String? stop,
-      double? totalDistance,
-      double? totalDown,
-      int? totalDuration,
-      int? totalRepetitions,
-      double? totalUp,
-      double? totalWeight,
-      String? type,
-      int? workoutID});
+      List<String> extraMetrics,
+      double maxElevation,
+      double maxSpeed,
+      double minElevation,
+      String name,
+      int pauseDuration,
+      DateTime start,
+      DateTime stop,
+      double totalDistance,
+      double totalDown,
+      int totalDuration,
+      int totalRepetitions,
+      double totalUp,
+      double totalWeight,
+      String type,
+      int workoutID});
 
-  $MapCenterCopyWith<$Res>? get center;
+  $MapCenterCopyWith<$Res> get center;
   $MapDataDetailsCopyWith<$Res>? get details;
 }
 
@@ -191,28 +191,28 @@ class _$MapDataCopyWithImpl<$Res> implements $MapDataCopyWith<$Res> {
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? addressString = freezed,
-    Object? averageSpeed = freezed,
-    Object? averageSpeedNoPause = freezed,
-    Object? center = freezed,
-    Object? creator = freezed,
+    Object? addressString = null,
+    Object? averageSpeed = null,
+    Object? averageSpeedNoPause = null,
+    Object? center = null,
+    Object? creator = null,
     Object? details = freezed,
-    Object? extraMetrics = freezed,
-    Object? maxElevation = freezed,
-    Object? maxSpeed = freezed,
-    Object? minElevation = freezed,
-    Object? name = freezed,
-    Object? pauseDuration = freezed,
-    Object? start = freezed,
-    Object? stop = freezed,
-    Object? totalDistance = freezed,
-    Object? totalDown = freezed,
-    Object? totalDuration = freezed,
-    Object? totalRepetitions = freezed,
-    Object? totalUp = freezed,
-    Object? totalWeight = freezed,
-    Object? type = freezed,
-    Object? workoutID = freezed,
+    Object? extraMetrics = null,
+    Object? maxElevation = null,
+    Object? maxSpeed = null,
+    Object? minElevation = null,
+    Object? name = null,
+    Object? pauseDuration = null,
+    Object? start = null,
+    Object? stop = null,
+    Object? totalDistance = null,
+    Object? totalDown = null,
+    Object? totalDuration = null,
+    Object? totalRepetitions = null,
+    Object? totalUp = null,
+    Object? totalWeight = null,
+    Object? type = null,
+    Object? workoutID = null,
   }) {
     return _then(_self.copyWith(
       id: freezed == id
@@ -227,94 +227,94 @@ class _$MapDataCopyWithImpl<$Res> implements $MapDataCopyWith<$Res> {
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      addressString: freezed == addressString
+      addressString: null == addressString
           ? _self.addressString
           : addressString // ignore: cast_nullable_to_non_nullable
-              as String?,
-      averageSpeed: freezed == averageSpeed
+              as String,
+      averageSpeed: null == averageSpeed
           ? _self.averageSpeed
           : averageSpeed // ignore: cast_nullable_to_non_nullable
-              as double?,
-      averageSpeedNoPause: freezed == averageSpeedNoPause
+              as double,
+      averageSpeedNoPause: null == averageSpeedNoPause
           ? _self.averageSpeedNoPause
           : averageSpeedNoPause // ignore: cast_nullable_to_non_nullable
-              as double?,
-      center: freezed == center
+              as double,
+      center: null == center
           ? _self.center
           : center // ignore: cast_nullable_to_non_nullable
-              as MapCenter?,
-      creator: freezed == creator
+              as MapCenter,
+      creator: null == creator
           ? _self.creator
           : creator // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       details: freezed == details
           ? _self.details
           : details // ignore: cast_nullable_to_non_nullable
               as MapDataDetails?,
-      extraMetrics: freezed == extraMetrics
+      extraMetrics: null == extraMetrics
           ? _self.extraMetrics
           : extraMetrics // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      maxElevation: freezed == maxElevation
+              as List<String>,
+      maxElevation: null == maxElevation
           ? _self.maxElevation
           : maxElevation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxSpeed: freezed == maxSpeed
+              as double,
+      maxSpeed: null == maxSpeed
           ? _self.maxSpeed
           : maxSpeed // ignore: cast_nullable_to_non_nullable
-              as double?,
-      minElevation: freezed == minElevation
+              as double,
+      minElevation: null == minElevation
           ? _self.minElevation
           : minElevation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      name: freezed == name
+              as double,
+      name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pauseDuration: freezed == pauseDuration
+              as String,
+      pauseDuration: null == pauseDuration
           ? _self.pauseDuration
           : pauseDuration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      start: freezed == start
+              as int,
+      start: null == start
           ? _self.start
           : start // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stop: freezed == stop
+              as DateTime,
+      stop: null == stop
           ? _self.stop
           : stop // ignore: cast_nullable_to_non_nullable
-              as String?,
-      totalDistance: freezed == totalDistance
+              as DateTime,
+      totalDistance: null == totalDistance
           ? _self.totalDistance
           : totalDistance // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalDown: freezed == totalDown
+              as double,
+      totalDown: null == totalDown
           ? _self.totalDown
           : totalDown // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalDuration: freezed == totalDuration
+              as double,
+      totalDuration: null == totalDuration
           ? _self.totalDuration
           : totalDuration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalRepetitions: freezed == totalRepetitions
+              as int,
+      totalRepetitions: null == totalRepetitions
           ? _self.totalRepetitions
           : totalRepetitions // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalUp: freezed == totalUp
+              as int,
+      totalUp: null == totalUp
           ? _self.totalUp
           : totalUp // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalWeight: freezed == totalWeight
+              as double,
+      totalWeight: null == totalWeight
           ? _self.totalWeight
           : totalWeight // ignore: cast_nullable_to_non_nullable
-              as double?,
-      type: freezed == type
+              as double,
+      type: null == type
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      workoutID: freezed == workoutID
+              as String,
+      workoutID: null == workoutID
           ? _self.workoutID
           : workoutID // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 
@@ -322,12 +322,8 @@ class _$MapDataCopyWithImpl<$Res> implements $MapDataCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MapCenterCopyWith<$Res>? get center {
-    if (_self.center == null) {
-      return null;
-    }
-
-    return $MapCenterCopyWith<$Res>(_self.center!, (value) {
+  $MapCenterCopyWith<$Res> get center {
+    return $MapCenterCopyWith<$Res>(_self.center, (value) {
       return _then(_self.copyWith(center: value));
     });
   }
@@ -354,28 +350,28 @@ class _MapData implements MapData {
       {this.id,
       this.createdAt,
       this.updatedAt,
-      this.addressString,
-      this.averageSpeed,
-      this.averageSpeedNoPause,
-      this.center,
-      this.creator,
+      required this.addressString,
+      this.averageSpeed = 0,
+      this.averageSpeedNoPause = 0,
+      required this.center,
+      required this.creator,
       this.details,
-      final List<String>? extraMetrics,
-      this.maxElevation,
-      this.maxSpeed,
-      this.minElevation,
-      this.name,
-      this.pauseDuration,
-      this.start,
-      this.stop,
-      this.totalDistance,
-      this.totalDown,
-      this.totalDuration,
-      this.totalRepetitions,
-      this.totalUp,
-      this.totalWeight,
-      this.type,
-      this.workoutID})
+      final List<String> extraMetrics = const [],
+      this.maxElevation = 0,
+      this.maxSpeed = 0,
+      this.minElevation = 0,
+      this.name = '',
+      this.pauseDuration = 0,
+      required this.start,
+      required this.stop,
+      this.totalDistance = 0,
+      this.totalDown = 0,
+      this.totalDuration = 0,
+      this.totalRepetitions = 0,
+      this.totalUp = 0,
+      this.totalWeight = 0,
+      required this.type,
+      required this.workoutID})
       : _extraMetrics = extraMetrics;
   factory _MapData.fromJson(Map<String, dynamic> json) =>
       _$MapDataFromJson(json);
@@ -390,79 +386,91 @@ class _MapData implements MapData {
 // AllOfdatabaseMapDataAddress? address,
 /* The generic location of the workout */
   @override
-  final String? addressString;
+  final String addressString;
 /* The average speed of the workout */
   @override
-  final double? averageSpeed;
+  @JsonKey()
+  final double averageSpeed;
 /* The average speed of the workout without pausing */
   @override
-  final double? averageSpeedNoPause;
+  @JsonKey()
+  final double averageSpeedNoPause;
 /* The center of the workout (in coordinates) */
   @override
-  final MapCenter? center;
+  final MapCenter center;
 /* The tool that created this workout */
   @override
-  final String? creator;
+  final String creator;
 /* The details of the workout */
   @override
   final MapDataDetails? details;
 /* Extra metrcis available */
-  final List<String>? _extraMetrics;
+  final List<String> _extraMetrics;
 /* Extra metrcis available */
   @override
-  List<String>? get extraMetrics {
-    final value = _extraMetrics;
-    if (value == null) return null;
+  @JsonKey()
+  List<String> get extraMetrics {
     if (_extraMetrics is EqualUnmodifiableListView) return _extraMetrics;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_extraMetrics);
   }
 
 /* The maximum elevation of the workout */
   @override
-  final double? maxElevation;
+  @JsonKey()
+  final double maxElevation;
 /* The maximum speed of the workout */
   @override
-  final double? maxSpeed;
+  @JsonKey()
+  final double maxSpeed;
 /* The minimum elevation of the workout */
   @override
-  final double? minElevation;
+  @JsonKey()
+  final double minElevation;
 /* The name of the workout */
   @override
-  final String? name;
+  @JsonKey()
+  final String name;
 /* The total pause duration of the workout */
   @override
-  final int? pauseDuration;
+  @JsonKey()
+  final int pauseDuration;
 /* The start time of the workout */
   @override
-  final String? start;
+  final DateTime start;
 /* The stop time of the workout */
   @override
-  final String? stop;
+  final DateTime stop;
 /* The total distance of the workout */
   @override
-  final double? totalDistance;
+  @JsonKey()
+  final double totalDistance;
 /* The total distance down of the workout */
   @override
-  final double? totalDown;
+  @JsonKey()
+  final double totalDown;
 /* The total duration of the workout */
   @override
-  final int? totalDuration;
+  @JsonKey()
+  final int totalDuration;
 /* The number of repetitions of the workout */
   @override
-  final int? totalRepetitions;
+  @JsonKey()
+  final int totalRepetitions;
 /* The total distance up of the workout */
   @override
-  final double? totalUp;
+  @JsonKey()
+  final double totalUp;
 /* The weight of the workout */
   @override
-  final double? totalWeight;
+  @JsonKey()
+  final double totalWeight;
 /* The type of the workout */
   @override
-  final String? type;
+  final String type;
 /* The workout this data belongs to */
   @override
-  final int? workoutID;
+  final int workoutID;
 
   /// Create a copy of MapData
   /// with the given fields replaced by the non-null parameter values.
@@ -574,31 +582,31 @@ abstract mixin class _$MapDataCopyWith<$Res> implements $MapDataCopyWith<$Res> {
       {int? id,
       String? createdAt,
       String? updatedAt,
-      String? addressString,
-      double? averageSpeed,
-      double? averageSpeedNoPause,
-      MapCenter? center,
-      String? creator,
+      String addressString,
+      double averageSpeed,
+      double averageSpeedNoPause,
+      MapCenter center,
+      String creator,
       MapDataDetails? details,
-      List<String>? extraMetrics,
-      double? maxElevation,
-      double? maxSpeed,
-      double? minElevation,
-      String? name,
-      int? pauseDuration,
-      String? start,
-      String? stop,
-      double? totalDistance,
-      double? totalDown,
-      int? totalDuration,
-      int? totalRepetitions,
-      double? totalUp,
-      double? totalWeight,
-      String? type,
-      int? workoutID});
+      List<String> extraMetrics,
+      double maxElevation,
+      double maxSpeed,
+      double minElevation,
+      String name,
+      int pauseDuration,
+      DateTime start,
+      DateTime stop,
+      double totalDistance,
+      double totalDown,
+      int totalDuration,
+      int totalRepetitions,
+      double totalUp,
+      double totalWeight,
+      String type,
+      int workoutID});
 
   @override
-  $MapCenterCopyWith<$Res>? get center;
+  $MapCenterCopyWith<$Res> get center;
   @override
   $MapDataDetailsCopyWith<$Res>? get details;
 }
@@ -618,28 +626,28 @@ class __$MapDataCopyWithImpl<$Res> implements _$MapDataCopyWith<$Res> {
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? addressString = freezed,
-    Object? averageSpeed = freezed,
-    Object? averageSpeedNoPause = freezed,
-    Object? center = freezed,
-    Object? creator = freezed,
+    Object? addressString = null,
+    Object? averageSpeed = null,
+    Object? averageSpeedNoPause = null,
+    Object? center = null,
+    Object? creator = null,
     Object? details = freezed,
-    Object? extraMetrics = freezed,
-    Object? maxElevation = freezed,
-    Object? maxSpeed = freezed,
-    Object? minElevation = freezed,
-    Object? name = freezed,
-    Object? pauseDuration = freezed,
-    Object? start = freezed,
-    Object? stop = freezed,
-    Object? totalDistance = freezed,
-    Object? totalDown = freezed,
-    Object? totalDuration = freezed,
-    Object? totalRepetitions = freezed,
-    Object? totalUp = freezed,
-    Object? totalWeight = freezed,
-    Object? type = freezed,
-    Object? workoutID = freezed,
+    Object? extraMetrics = null,
+    Object? maxElevation = null,
+    Object? maxSpeed = null,
+    Object? minElevation = null,
+    Object? name = null,
+    Object? pauseDuration = null,
+    Object? start = null,
+    Object? stop = null,
+    Object? totalDistance = null,
+    Object? totalDown = null,
+    Object? totalDuration = null,
+    Object? totalRepetitions = null,
+    Object? totalUp = null,
+    Object? totalWeight = null,
+    Object? type = null,
+    Object? workoutID = null,
   }) {
     return _then(_MapData(
       id: freezed == id
@@ -654,94 +662,94 @@ class __$MapDataCopyWithImpl<$Res> implements _$MapDataCopyWith<$Res> {
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      addressString: freezed == addressString
+      addressString: null == addressString
           ? _self.addressString
           : addressString // ignore: cast_nullable_to_non_nullable
-              as String?,
-      averageSpeed: freezed == averageSpeed
+              as String,
+      averageSpeed: null == averageSpeed
           ? _self.averageSpeed
           : averageSpeed // ignore: cast_nullable_to_non_nullable
-              as double?,
-      averageSpeedNoPause: freezed == averageSpeedNoPause
+              as double,
+      averageSpeedNoPause: null == averageSpeedNoPause
           ? _self.averageSpeedNoPause
           : averageSpeedNoPause // ignore: cast_nullable_to_non_nullable
-              as double?,
-      center: freezed == center
+              as double,
+      center: null == center
           ? _self.center
           : center // ignore: cast_nullable_to_non_nullable
-              as MapCenter?,
-      creator: freezed == creator
+              as MapCenter,
+      creator: null == creator
           ? _self.creator
           : creator // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       details: freezed == details
           ? _self.details
           : details // ignore: cast_nullable_to_non_nullable
               as MapDataDetails?,
-      extraMetrics: freezed == extraMetrics
+      extraMetrics: null == extraMetrics
           ? _self._extraMetrics
           : extraMetrics // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      maxElevation: freezed == maxElevation
+              as List<String>,
+      maxElevation: null == maxElevation
           ? _self.maxElevation
           : maxElevation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxSpeed: freezed == maxSpeed
+              as double,
+      maxSpeed: null == maxSpeed
           ? _self.maxSpeed
           : maxSpeed // ignore: cast_nullable_to_non_nullable
-              as double?,
-      minElevation: freezed == minElevation
+              as double,
+      minElevation: null == minElevation
           ? _self.minElevation
           : minElevation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      name: freezed == name
+              as double,
+      name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pauseDuration: freezed == pauseDuration
+              as String,
+      pauseDuration: null == pauseDuration
           ? _self.pauseDuration
           : pauseDuration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      start: freezed == start
+              as int,
+      start: null == start
           ? _self.start
           : start // ignore: cast_nullable_to_non_nullable
-              as String?,
-      stop: freezed == stop
+              as DateTime,
+      stop: null == stop
           ? _self.stop
           : stop // ignore: cast_nullable_to_non_nullable
-              as String?,
-      totalDistance: freezed == totalDistance
+              as DateTime,
+      totalDistance: null == totalDistance
           ? _self.totalDistance
           : totalDistance // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalDown: freezed == totalDown
+              as double,
+      totalDown: null == totalDown
           ? _self.totalDown
           : totalDown // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalDuration: freezed == totalDuration
+              as double,
+      totalDuration: null == totalDuration
           ? _self.totalDuration
           : totalDuration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalRepetitions: freezed == totalRepetitions
+              as int,
+      totalRepetitions: null == totalRepetitions
           ? _self.totalRepetitions
           : totalRepetitions // ignore: cast_nullable_to_non_nullable
-              as int?,
-      totalUp: freezed == totalUp
+              as int,
+      totalUp: null == totalUp
           ? _self.totalUp
           : totalUp // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalWeight: freezed == totalWeight
+              as double,
+      totalWeight: null == totalWeight
           ? _self.totalWeight
           : totalWeight // ignore: cast_nullable_to_non_nullable
-              as double?,
-      type: freezed == type
+              as double,
+      type: null == type
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      workoutID: freezed == workoutID
+              as String,
+      workoutID: null == workoutID
           ? _self.workoutID
           : workoutID // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 
@@ -749,12 +757,8 @@ class __$MapDataCopyWithImpl<$Res> implements _$MapDataCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $MapCenterCopyWith<$Res>? get center {
-    if (_self.center == null) {
-      return null;
-    }
-
-    return $MapCenterCopyWith<$Res>(_self.center!, (value) {
+  $MapCenterCopyWith<$Res> get center {
+    return $MapCenterCopyWith<$Res>(_self.center, (value) {
       return _then(_self.copyWith(center: value));
     });
   }

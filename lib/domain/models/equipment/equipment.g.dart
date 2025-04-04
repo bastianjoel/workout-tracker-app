@@ -7,11 +7,11 @@ part of 'equipment.dart';
 // **************************************************************************
 
 _Equipment _$EquipmentFromJson(Map<String, dynamic> json) => _Equipment(
-      id: (json['id'] as num).toInt(),
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String,
-      active: json['active'] as String,
-      description: json['description'] as String,
+      id: (json['id'] as num?)?.toInt(),
+      createdAt: json['createdAt'] as String?,
+      updatedAt: json['updatedAt'] as String?,
+      active: json['active'] as bool,
+      description: json['description'] as String? ?? '',
       name: json['name'] as String,
       userID: (json['userID'] as num).toInt(),
     );

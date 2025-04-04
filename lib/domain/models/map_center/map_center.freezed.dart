@@ -16,9 +16,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MapCenter {
 /* Latitude */
-  double? get lat; /* Longitude */
-  double? get lng; /* Timezone */
-  String? get tz;
+  double get lat; /* Longitude */
+  double get lng; /* Timezone */
+  String get tz;
 
   /// Create a copy of MapCenter
   /// with the given fields replaced by the non-null parameter values.
@@ -55,7 +55,7 @@ abstract mixin class $MapCenterCopyWith<$Res> {
   factory $MapCenterCopyWith(MapCenter value, $Res Function(MapCenter) _then) =
       _$MapCenterCopyWithImpl;
   @useResult
-  $Res call({double? lat, double? lng, String? tz});
+  $Res call({double lat, double lng, String tz});
 }
 
 /// @nodoc
@@ -70,23 +70,23 @@ class _$MapCenterCopyWithImpl<$Res> implements $MapCenterCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lat = freezed,
-    Object? lng = freezed,
-    Object? tz = freezed,
+    Object? lat = null,
+    Object? lng = null,
+    Object? tz = null,
   }) {
     return _then(_self.copyWith(
-      lat: freezed == lat
+      lat: null == lat
           ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lng: freezed == lng
+              as double,
+      lng: null == lng
           ? _self.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tz: freezed == tz
+              as double,
+      tz: null == tz
           ? _self.tz
           : tz // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -94,19 +94,19 @@ class _$MapCenterCopyWithImpl<$Res> implements $MapCenterCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class _MapCenter implements MapCenter {
-  const _MapCenter({this.lat, this.lng, this.tz});
+  const _MapCenter({required this.lat, required this.lng, required this.tz});
   factory _MapCenter.fromJson(Map<String, dynamic> json) =>
       _$MapCenterFromJson(json);
 
 /* Latitude */
   @override
-  final double? lat;
+  final double lat;
 /* Longitude */
   @override
-  final double? lng;
+  final double lng;
 /* Timezone */
   @override
-  final String? tz;
+  final String tz;
 
   /// Create a copy of MapCenter
   /// with the given fields replaced by the non-null parameter values.
@@ -151,7 +151,7 @@ abstract mixin class _$MapCenterCopyWith<$Res>
       __$MapCenterCopyWithImpl;
   @override
   @useResult
-  $Res call({double? lat, double? lng, String? tz});
+  $Res call({double lat, double lng, String tz});
 }
 
 /// @nodoc
@@ -166,23 +166,23 @@ class __$MapCenterCopyWithImpl<$Res> implements _$MapCenterCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? lat = freezed,
-    Object? lng = freezed,
-    Object? tz = freezed,
+    Object? lat = null,
+    Object? lng = null,
+    Object? tz = null,
   }) {
     return _then(_MapCenter(
-      lat: freezed == lat
+      lat: null == lat
           ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lng: freezed == lng
+              as double,
+      lng: null == lng
           ? _self.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tz: freezed == tz
+              as double,
+      tz: null == tz
           ? _self.tz
           : tz // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }

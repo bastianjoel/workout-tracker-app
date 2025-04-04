@@ -16,17 +16,17 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MapPoint {
 /* The distance from the previous point */
-  double? get distance; /* The duration from the previous point */
-  int? get duration; /* The elevation of the point */
-  double? get elevation; /* Extra metrics at this point */
+  double get distance; /* The duration from the previous point */
+  int get duration; /* The elevation of the point */
+  double get elevation; /* Extra metrics at this point */
 // AllOfdatabaseMapPointExtraMetrics? extraMetrics,
 /* The latitude of the point */
-  double? get lat; /* The longitude of the point */
-  double? get lng; /* The time the point was recorded */
-  String? get time; /* The total distance of the workout up to this point */
-  double?
+  double get lat; /* The longitude of the point */
+  double get lng; /* The time the point was recorded */
+  DateTime get time; /* The total distance of the workout up to this point */
+  double
       get totalDistance; /* The total duration of the workout up to this point */
-  int? get totalDuration;
+  int get totalDuration;
 
   /// Create a copy of MapPoint
   /// with the given fields replaced by the non-null parameter values.
@@ -75,14 +75,14 @@ abstract mixin class $MapPointCopyWith<$Res> {
       _$MapPointCopyWithImpl;
   @useResult
   $Res call(
-      {double? distance,
-      int? duration,
-      double? elevation,
-      double? lat,
-      double? lng,
-      String? time,
-      double? totalDistance,
-      int? totalDuration});
+      {double distance,
+      int duration,
+      double elevation,
+      double lat,
+      double lng,
+      DateTime time,
+      double totalDistance,
+      int totalDuration});
 }
 
 /// @nodoc
@@ -97,48 +97,48 @@ class _$MapPointCopyWithImpl<$Res> implements $MapPointCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? distance = freezed,
-    Object? duration = freezed,
-    Object? elevation = freezed,
-    Object? lat = freezed,
-    Object? lng = freezed,
-    Object? time = freezed,
-    Object? totalDistance = freezed,
-    Object? totalDuration = freezed,
+    Object? distance = null,
+    Object? duration = null,
+    Object? elevation = null,
+    Object? lat = null,
+    Object? lng = null,
+    Object? time = null,
+    Object? totalDistance = null,
+    Object? totalDuration = null,
   }) {
     return _then(_self.copyWith(
-      distance: freezed == distance
+      distance: null == distance
           ? _self.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as double?,
-      duration: freezed == duration
+              as double,
+      duration: null == duration
           ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      elevation: freezed == elevation
+              as int,
+      elevation: null == elevation
           ? _self.elevation
           : elevation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lat: freezed == lat
+              as double,
+      lat: null == lat
           ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lng: freezed == lng
+              as double,
+      lng: null == lng
           ? _self.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double?,
-      time: freezed == time
+              as double,
+      time: null == time
           ? _self.time
           : time // ignore: cast_nullable_to_non_nullable
-              as String?,
-      totalDistance: freezed == totalDistance
+              as DateTime,
+      totalDistance: null == totalDistance
           ? _self.totalDistance
           : totalDistance // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalDuration: freezed == totalDuration
+              as double,
+      totalDuration: null == totalDuration
           ? _self.totalDuration
           : totalDuration // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -147,43 +147,43 @@ class _$MapPointCopyWithImpl<$Res> implements $MapPointCopyWith<$Res> {
 @JsonSerializable()
 class _MapPoint implements MapPoint {
   const _MapPoint(
-      {this.distance,
-      this.duration,
-      this.elevation,
-      this.lat,
-      this.lng,
-      this.time,
-      this.totalDistance,
-      this.totalDuration});
+      {required this.distance,
+      required this.duration,
+      required this.elevation,
+      required this.lat,
+      required this.lng,
+      required this.time,
+      required this.totalDistance,
+      required this.totalDuration});
   factory _MapPoint.fromJson(Map<String, dynamic> json) =>
       _$MapPointFromJson(json);
 
 /* The distance from the previous point */
   @override
-  final double? distance;
+  final double distance;
 /* The duration from the previous point */
   @override
-  final int? duration;
+  final int duration;
 /* The elevation of the point */
   @override
-  final double? elevation;
+  final double elevation;
 /* Extra metrics at this point */
 // AllOfdatabaseMapPointExtraMetrics? extraMetrics,
 /* The latitude of the point */
   @override
-  final double? lat;
+  final double lat;
 /* The longitude of the point */
   @override
-  final double? lng;
+  final double lng;
 /* The time the point was recorded */
   @override
-  final String? time;
+  final DateTime time;
 /* The total distance of the workout up to this point */
   @override
-  final double? totalDistance;
+  final double totalDistance;
 /* The total duration of the workout up to this point */
   @override
-  final int? totalDuration;
+  final int totalDuration;
 
   /// Create a copy of MapPoint
   /// with the given fields replaced by the non-null parameter values.
@@ -239,14 +239,14 @@ abstract mixin class _$MapPointCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double? distance,
-      int? duration,
-      double? elevation,
-      double? lat,
-      double? lng,
-      String? time,
-      double? totalDistance,
-      int? totalDuration});
+      {double distance,
+      int duration,
+      double elevation,
+      double lat,
+      double lng,
+      DateTime time,
+      double totalDistance,
+      int totalDuration});
 }
 
 /// @nodoc
@@ -261,48 +261,48 @@ class __$MapPointCopyWithImpl<$Res> implements _$MapPointCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? distance = freezed,
-    Object? duration = freezed,
-    Object? elevation = freezed,
-    Object? lat = freezed,
-    Object? lng = freezed,
-    Object? time = freezed,
-    Object? totalDistance = freezed,
-    Object? totalDuration = freezed,
+    Object? distance = null,
+    Object? duration = null,
+    Object? elevation = null,
+    Object? lat = null,
+    Object? lng = null,
+    Object? time = null,
+    Object? totalDistance = null,
+    Object? totalDuration = null,
   }) {
     return _then(_MapPoint(
-      distance: freezed == distance
+      distance: null == distance
           ? _self.distance
           : distance // ignore: cast_nullable_to_non_nullable
-              as double?,
-      duration: freezed == duration
+              as double,
+      duration: null == duration
           ? _self.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as int?,
-      elevation: freezed == elevation
+              as int,
+      elevation: null == elevation
           ? _self.elevation
           : elevation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lat: freezed == lat
+              as double,
+      lat: null == lat
           ? _self.lat
           : lat // ignore: cast_nullable_to_non_nullable
-              as double?,
-      lng: freezed == lng
+              as double,
+      lng: null == lng
           ? _self.lng
           : lng // ignore: cast_nullable_to_non_nullable
-              as double?,
-      time: freezed == time
+              as double,
+      time: null == time
           ? _self.time
           : time // ignore: cast_nullable_to_non_nullable
-              as String?,
-      totalDistance: freezed == totalDistance
+              as DateTime,
+      totalDistance: null == totalDistance
           ? _self.totalDistance
           : totalDistance // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalDuration: freezed == totalDuration
+              as double,
+      totalDuration: null == totalDuration
           ? _self.totalDuration
           : totalDuration // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }

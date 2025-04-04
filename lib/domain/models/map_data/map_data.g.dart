@@ -10,34 +10,34 @@ _MapData _$MapDataFromJson(Map<String, dynamic> json) => _MapData(
       id: (json['id'] as num?)?.toInt(),
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      addressString: json['addressString'] as String?,
-      averageSpeed: (json['averageSpeed'] as num?)?.toDouble(),
-      averageSpeedNoPause: (json['averageSpeedNoPause'] as num?)?.toDouble(),
-      center: json['center'] == null
-          ? null
-          : MapCenter.fromJson(json['center'] as Map<String, dynamic>),
-      creator: json['creator'] as String?,
+      addressString: json['addressString'] as String,
+      averageSpeed: (json['averageSpeed'] as num?)?.toDouble() ?? 0,
+      averageSpeedNoPause:
+          (json['averageSpeedNoPause'] as num?)?.toDouble() ?? 0,
+      center: MapCenter.fromJson(json['center'] as Map<String, dynamic>),
+      creator: json['creator'] as String,
       details: json['details'] == null
           ? null
           : MapDataDetails.fromJson(json['details'] as Map<String, dynamic>),
       extraMetrics: (json['extraMetrics'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      maxElevation: (json['maxElevation'] as num?)?.toDouble(),
-      maxSpeed: (json['maxSpeed'] as num?)?.toDouble(),
-      minElevation: (json['minElevation'] as num?)?.toDouble(),
-      name: json['name'] as String?,
-      pauseDuration: (json['pauseDuration'] as num?)?.toInt(),
-      start: json['start'] as String?,
-      stop: json['stop'] as String?,
-      totalDistance: (json['totalDistance'] as num?)?.toDouble(),
-      totalDown: (json['totalDown'] as num?)?.toDouble(),
-      totalDuration: (json['totalDuration'] as num?)?.toInt(),
-      totalRepetitions: (json['totalRepetitions'] as num?)?.toInt(),
-      totalUp: (json['totalUp'] as num?)?.toDouble(),
-      totalWeight: (json['totalWeight'] as num?)?.toDouble(),
-      type: json['type'] as String?,
-      workoutID: (json['workoutID'] as num?)?.toInt(),
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      maxElevation: (json['maxElevation'] as num?)?.toDouble() ?? 0,
+      maxSpeed: (json['maxSpeed'] as num?)?.toDouble() ?? 0,
+      minElevation: (json['minElevation'] as num?)?.toDouble() ?? 0,
+      name: json['name'] as String? ?? '',
+      pauseDuration: (json['pauseDuration'] as num?)?.toInt() ?? 0,
+      start: DateTime.parse(json['start'] as String),
+      stop: DateTime.parse(json['stop'] as String),
+      totalDistance: (json['totalDistance'] as num?)?.toDouble() ?? 0,
+      totalDown: (json['totalDown'] as num?)?.toDouble() ?? 0,
+      totalDuration: (json['totalDuration'] as num?)?.toInt() ?? 0,
+      totalRepetitions: (json['totalRepetitions'] as num?)?.toInt() ?? 0,
+      totalUp: (json['totalUp'] as num?)?.toDouble() ?? 0,
+      totalWeight: (json['totalWeight'] as num?)?.toDouble() ?? 0,
+      type: json['type'] as String,
+      workoutID: (json['workoutID'] as num).toInt(),
     );
 
 Map<String, dynamic> _$MapDataToJson(_MapData instance) => <String, dynamic>{
@@ -56,8 +56,8 @@ Map<String, dynamic> _$MapDataToJson(_MapData instance) => <String, dynamic>{
       'minElevation': instance.minElevation,
       'name': instance.name,
       'pauseDuration': instance.pauseDuration,
-      'start': instance.start,
-      'stop': instance.stop,
+      'start': instance.start.toIso8601String(),
+      'stop': instance.stop.toIso8601String(),
       'totalDistance': instance.totalDistance,
       'totalDown': instance.totalDown,
       'totalDuration': instance.totalDuration,

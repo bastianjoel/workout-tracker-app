@@ -18,21 +18,21 @@ mixin _$Workout {
   int? get id;
   String? get createdAt;
   String? get updatedAt; /* The ID of the user who owns the workout */
-  int? get userID; /* The map data associated with the workout */
+  int get userID; /* The map data associated with the workout */
   MapData? get data; /* The timestamp the workout was recorded */
-  String?
+  DateTime
       get date; /* Whether the workout has been modified and the details should be re-rendered */
   bool? get dirty; /* Which equipment is used for this workout */
   List<Equipment> get equipment; /* The file data associated with the workout */
 // AllOfdatabaseWorkoutGpx? gpx,
 /* The name of the workout */
-  String? get name; /* The notes associated with the workout, in markdown */
-  String?
+  String get name; /* The notes associated with the workout, in markdown */
+  String
       get notes; /* UUID to publicly share a workout - this UUID can be rotated */
   String? get publicUUID; /* Which route segments match */
 // List<DatabaseRouteSegmentMatch> routeSegmentMatches,
 /* The type of the workout */
-  String? get type;
+  String get type;
 
   /// Create a copy of Workout
   /// with the given fields replaced by the non-null parameter values.
@@ -98,15 +98,15 @@ abstract mixin class $WorkoutCopyWith<$Res> {
       {int? id,
       String? createdAt,
       String? updatedAt,
-      int? userID,
+      int userID,
       MapData? data,
-      String? date,
+      DateTime date,
       bool? dirty,
       List<Equipment> equipment,
-      String? name,
-      String? notes,
+      String name,
+      String notes,
       String? publicUUID,
-      String? type});
+      String type});
 
   $MapDataCopyWith<$Res>? get data;
 }
@@ -126,15 +126,15 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? userID = freezed,
+    Object? userID = null,
     Object? data = freezed,
-    Object? date = freezed,
+    Object? date = null,
     Object? dirty = freezed,
     Object? equipment = null,
-    Object? name = freezed,
-    Object? notes = freezed,
+    Object? name = null,
+    Object? notes = null,
     Object? publicUUID = freezed,
-    Object? type = freezed,
+    Object? type = null,
   }) {
     return _then(_self.copyWith(
       id: freezed == id
@@ -149,18 +149,18 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      userID: freezed == userID
+      userID: null == userID
           ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       data: freezed == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as MapData?,
-      date: freezed == date
+      date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime,
       dirty: freezed == dirty
           ? _self.dirty
           : dirty // ignore: cast_nullable_to_non_nullable
@@ -169,22 +169,22 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
           ? _self.equipment
           : equipment // ignore: cast_nullable_to_non_nullable
               as List<Equipment>,
-      name: freezed == name
+      name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      notes: freezed == notes
+              as String,
+      notes: null == notes
           ? _self.notes
           : notes // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       publicUUID: freezed == publicUUID
           ? _self.publicUUID
           : publicUUID // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: freezed == type
+      type: null == type
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 
@@ -210,15 +210,15 @@ class _Workout implements Workout {
       {this.id,
       this.createdAt,
       this.updatedAt,
-      this.userID,
+      required this.userID,
       this.data,
-      this.date,
+      required this.date,
       this.dirty,
       final List<Equipment> equipment = const [],
-      this.name,
-      this.notes,
+      required this.name,
+      this.notes = '',
       this.publicUUID,
-      this.type})
+      required this.type})
       : _equipment = equipment;
   factory _Workout.fromJson(Map<String, dynamic> json) =>
       _$WorkoutFromJson(json);
@@ -231,13 +231,13 @@ class _Workout implements Workout {
   final String? updatedAt;
 /* The ID of the user who owns the workout */
   @override
-  final int? userID;
+  final int userID;
 /* The map data associated with the workout */
   @override
   final MapData? data;
 /* The timestamp the workout was recorded */
   @override
-  final String? date;
+  final DateTime date;
 /* Whether the workout has been modified and the details should be re-rendered */
   @override
   final bool? dirty;
@@ -256,10 +256,11 @@ class _Workout implements Workout {
 // AllOfdatabaseWorkoutGpx? gpx,
 /* The name of the workout */
   @override
-  final String? name;
+  final String name;
 /* The notes associated with the workout, in markdown */
   @override
-  final String? notes;
+  @JsonKey()
+  final String notes;
 /* UUID to publicly share a workout - this UUID can be rotated */
   @override
   final String? publicUUID;
@@ -267,7 +268,7 @@ class _Workout implements Workout {
 // List<DatabaseRouteSegmentMatch> routeSegmentMatches,
 /* The type of the workout */
   @override
-  final String? type;
+  final String type;
 
   /// Create a copy of Workout
   /// with the given fields replaced by the non-null parameter values.
@@ -340,15 +341,15 @@ abstract mixin class _$WorkoutCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
       {int? id,
       String? createdAt,
       String? updatedAt,
-      int? userID,
+      int userID,
       MapData? data,
-      String? date,
+      DateTime date,
       bool? dirty,
       List<Equipment> equipment,
-      String? name,
-      String? notes,
+      String name,
+      String notes,
       String? publicUUID,
-      String? type});
+      String type});
 
   @override
   $MapDataCopyWith<$Res>? get data;
@@ -369,15 +370,15 @@ class __$WorkoutCopyWithImpl<$Res> implements _$WorkoutCopyWith<$Res> {
     Object? id = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? userID = freezed,
+    Object? userID = null,
     Object? data = freezed,
-    Object? date = freezed,
+    Object? date = null,
     Object? dirty = freezed,
     Object? equipment = null,
-    Object? name = freezed,
-    Object? notes = freezed,
+    Object? name = null,
+    Object? notes = null,
     Object? publicUUID = freezed,
-    Object? type = freezed,
+    Object? type = null,
   }) {
     return _then(_Workout(
       id: freezed == id
@@ -392,18 +393,18 @@ class __$WorkoutCopyWithImpl<$Res> implements _$WorkoutCopyWith<$Res> {
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      userID: freezed == userID
+      userID: null == userID
           ? _self.userID
           : userID // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       data: freezed == data
           ? _self.data
           : data // ignore: cast_nullable_to_non_nullable
               as MapData?,
-      date: freezed == date
+      date: null == date
           ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime,
       dirty: freezed == dirty
           ? _self.dirty
           : dirty // ignore: cast_nullable_to_non_nullable
@@ -412,22 +413,22 @@ class __$WorkoutCopyWithImpl<$Res> implements _$WorkoutCopyWith<$Res> {
           ? _self._equipment
           : equipment // ignore: cast_nullable_to_non_nullable
               as List<Equipment>,
-      name: freezed == name
+      name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      notes: freezed == notes
+              as String,
+      notes: null == notes
           ? _self.notes
           : notes // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       publicUUID: freezed == publicUUID
           ? _self.publicUUID
           : publicUUID // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: freezed == type
+      type: null == type
           ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 

@@ -15,10 +15,10 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Equipment {
-  int get id;
-  String get createdAt;
-  String get updatedAt; /* Whether this equipment is active */
-  String get active; /* Which workout types to add this equipment by default */
+  int? get id;
+  String? get createdAt;
+  String? get updatedAt; /* Whether this equipment is active */
+  bool get active; /* Which workout types to add this equipment by default */
 // required List<DatabaseWorkoutType> defaultFor,
 /* More information about the equipment */
   String get description; /* The name of the gear */
@@ -69,10 +69,10 @@ abstract mixin class $EquipmentCopyWith<$Res> {
       _$EquipmentCopyWithImpl;
   @useResult
   $Res call(
-      {int id,
-      String createdAt,
-      String updatedAt,
-      String active,
+      {int? id,
+      String? createdAt,
+      String? updatedAt,
+      bool active,
       String description,
       String name,
       int userID});
@@ -90,31 +90,31 @@ class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? id = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
     Object? active = null,
     Object? description = null,
     Object? name = null,
     Object? userID = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
+              as String?,
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       active: null == active
           ? _self.active
           : active // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       description: null == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -135,29 +135,30 @@ class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
 @JsonSerializable()
 class _Equipment implements Equipment {
   const _Equipment(
-      {required this.id,
-      required this.createdAt,
-      required this.updatedAt,
+      {this.id,
+      this.createdAt,
+      this.updatedAt,
       required this.active,
-      required this.description,
+      this.description = '',
       required this.name,
       required this.userID});
   factory _Equipment.fromJson(Map<String, dynamic> json) =>
       _$EquipmentFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String createdAt;
+  final String? createdAt;
   @override
-  final String updatedAt;
+  final String? updatedAt;
 /* Whether this equipment is active */
   @override
-  final String active;
+  final bool active;
 /* Which workout types to add this equipment by default */
 // required List<DatabaseWorkoutType> defaultFor,
 /* More information about the equipment */
   @override
+  @JsonKey()
   final String description;
 /* The name of the gear */
   @override
@@ -218,10 +219,10 @@ abstract mixin class _$EquipmentCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String createdAt,
-      String updatedAt,
-      String active,
+      {int? id,
+      String? createdAt,
+      String? updatedAt,
+      bool active,
       String description,
       String name,
       int userID});
@@ -239,31 +240,31 @@ class __$EquipmentCopyWithImpl<$Res> implements _$EquipmentCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
-    Object? createdAt = null,
-    Object? updatedAt = null,
+    Object? id = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
     Object? active = null,
     Object? description = null,
     Object? name = null,
     Object? userID = null,
   }) {
     return _then(_Equipment(
-      id: null == id
+      id: freezed == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
+              as int?,
+      createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: null == updatedAt
+              as String?,
+      updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       active: null == active
           ? _self.active
           : active // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       description: null == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable

@@ -11,7 +11,7 @@ _MapDataDetails _$MapDataDetailsFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num?)?.toInt(),
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      mapDataID: (json['mapDataID'] as num?)?.toInt(),
+      mapDataID: (json['mapDataID'] as num).toInt(),
       points: (json['points'] as List<dynamic>?)
               ?.map((e) => MapPoint.fromJson(e as Map<String, dynamic>))
               .toList() ??

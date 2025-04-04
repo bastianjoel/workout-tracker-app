@@ -10,7 +10,7 @@ _Measurement _$MeasurementFromJson(Map<String, dynamic> json) => _Measurement(
       id: (json['id'] as num?)?.toInt(),
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      steps: (json['steps'] as num?)?.toDouble(),
+      steps: (json['steps'] as num?)?.toDouble() ?? 0,
       userID: (json['userID'] as num?)?.toInt(),
       weight: (json['weight'] as num?)?.toDouble(),
       date: json['date'] as String,

@@ -47,7 +47,7 @@ class WorkoutListTile extends StatelessWidget {
               );
             }),
       ),
-      title: Text(workout.name ?? ''),
+      title: Text(workout.name),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

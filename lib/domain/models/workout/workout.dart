@@ -13,13 +13,13 @@ abstract class Workout with _$Workout {
     String? updatedAt,
 
     /* The ID of the user who owns the workout */
-    int? userID,
+    required int userID,
 
     /* The map data associated with the workout */
     MapData? data,
 
     /* The timestamp the workout was recorded */
-    String? date,
+    required DateTime date,
 
     /* Whether the workout has been modified and the details should be re-rendered */
     bool? dirty,
@@ -31,10 +31,11 @@ abstract class Workout with _$Workout {
     // AllOfdatabaseWorkoutGpx? gpx,
 
     /* The name of the workout */
-    String? name,
+    required String name,
 
     /* The notes associated with the workout, in markdown */
-    String? notes,
+    @Default('')
+    String notes,
 
     /* UUID to publicly share a workout - this UUID can be rotated */
     String? publicUUID,
@@ -43,7 +44,7 @@ abstract class Workout with _$Workout {
     // List<DatabaseRouteSegmentMatch> routeSegmentMatches,
 
     /* The type of the workout */
-    String? type,
+    required String type,
 
     /* The user who owns the workout */
     // AllOfdatabaseWorkoutUser user,
