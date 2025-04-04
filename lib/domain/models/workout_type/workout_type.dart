@@ -63,25 +63,52 @@ class WorkoutType {
       case "weight-lifting":
         return Icons.fitness_center;
     }
-    throw('Unknown enum value to decode: $value');
+    throw ('Unknown enum value to decode: $value');
   }
 
   WorkoutType.fromJson(dynamic data) {
     switch (data) {
-          case "auto": value = data; break;
-          case "running": value = data; break;
-          case "cycling": value = data; break;
-          case "e-cycling": value = data; break;
-          case "walking": value = data; break;
-          case "skiing": value = data; break;
-          case "snowboarding": value = data; break;
-          case "swimming": value = data; break;
-          case "kayaking": value = data; break;
-          case "golfing": value = data; break;
-          case "hiking": value = data; break;
-          case "push-ups": value = data; break;
-          case "weight-lifting": value = data; break;
-    default: throw('Unknown enum value to decode: $data');
+      case "auto":
+        value = data;
+        break;
+      case "running":
+        value = data;
+        break;
+      case "cycling":
+        value = data;
+        break;
+      case "e-cycling":
+        value = data;
+        break;
+      case "walking":
+        value = data;
+        break;
+      case "skiing":
+        value = data;
+        break;
+      case "snowboarding":
+        value = data;
+        break;
+      case "swimming":
+        value = data;
+        break;
+      case "kayaking":
+        value = data;
+        break;
+      case "golfing":
+        value = data;
+        break;
+      case "hiking":
+        value = data;
+        break;
+      case "push-ups":
+        value = data;
+        break;
+      case "weight-lifting":
+        value = data;
+        break;
+      default:
+        throw ('Unknown enum value to decode: $data');
     }
   }
 

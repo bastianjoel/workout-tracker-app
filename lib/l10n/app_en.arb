@@ -1,6 +1,8 @@
 {
+  "url": "URL",
   "apiKey": "API-Key",
   "login": "Login",
+  "logout": "Logout",
   "home": "Home",
   "trainings": "Trainings",
   "recording": "Recording",

@@ -15,6 +15,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _url = TextEditingController(
+    text: '',
+  );
+
   final TextEditingController _apiKey = TextEditingController(
     text: '',
   );
@@ -47,28 +51,43 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      TextField(
-                        controller: _apiKey,
-                        obscureText: true,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: AppLocalizations.of(context)!.apiKey,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      FilledButton(
-                        onPressed: () => {
-                          widget.viewModel.loginApi.execute(_apiKey.value.text)
-                        },
-                        child: Text(AppLocalizations.of(context)!.login),
-                      )
-                    ]))
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextField(
+                    controller: _url,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    keyboardType: TextInputType.url,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: AppLocalizations.of(context)!.url,
+                      hintText: 'https://example.com',
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: _apiKey,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: AppLocalizations.of(context)!.apiKey,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  FilledButton(
+                    onPressed: () => {
+                      widget.viewModel.loginApi.execute(
+                          LoginData(url: _url.text, apiKey: _apiKey.text))
+                    },
+                    child: Text(AppLocalizations.of(context)!.login),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -16,18 +16,17 @@ class WorkoutListTile extends StatelessWidget {
       leading: SizedBox(
         width: 60,
         height: 60,
-        child: Builder(
-            builder: (context) {
-              if (workout.data == null) {
-                return const Center(
-                  child: Icon(Icons.error),
-                );
-              } else {
-                return Center(
-                  child: Icon(workout.type.icon),
-                );
-              }
-            }),
+        child: Builder(builder: (context) {
+          if (workout.data == null) {
+            return const Center(
+              child: Icon(Icons.error),
+            );
+          } else {
+            return Center(
+              child: Icon(workout.type.icon),
+            );
+          }
+        }),
       ),
       title: Text(workout.name),
       subtitle: Row(

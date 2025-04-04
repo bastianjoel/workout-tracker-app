@@ -6,6 +6,7 @@ import 'package:workout_tracker_app/ui/core/ui/main_scaffold.dart';
 import 'package:workout_tracker_app/ui/home/view_models/home_viewmodel.dart';
 import 'package:workout_tracker_app/ui/home/widgets/home_screen.dart';
 import 'package:workout_tracker_app/ui/recording/widgets/recording_screen.dart';
+import 'package:workout_tracker_app/ui/settings/view_models/settings_viewmodel.dart';
 import 'package:workout_tracker_app/ui/settings/widgets/settings_screen.dart';
 import 'package:workout_tracker_app/ui/statistic/overview/widgets/statistic_overview_screen.dart';
 import 'package:workout_tracker_app/ui/workout/detail/view_models/workout_detail_viewmodel.dart';
@@ -92,7 +93,11 @@ GoRouter router(AuthRepository authRepository) => GoRouter(
               GoRoute(
                   path: Routes.settings,
                   builder: (context, state) {
-                    return SettingsScreen();
+                    return SettingsScreen(
+                      viewModel: SettingsViewModel(
+                        authRepository: context.read(),
+                      ),
+                    );
                   }),
             ]),
           ],
