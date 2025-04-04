@@ -38,15 +38,15 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
           final mapData = workout.data!;
           MapController controller = MapController.withPosition(
             initPosition: GeoPoint(
-              latitude: mapData.center?.lat ?? 0,
-              longitude: mapData.center?.lng ?? 0,
+              latitude: mapData.center.lat,
+              longitude: mapData.center.lng,
             ),
           );
 
           workoutPath = mapData.details!.points
               .map((e) => GeoPoint(
-                    latitude: e.lat!,
-                    longitude: e.lng!,
+                    latitude: e.lat,
+                    longitude: e.lng,
                   ))
               .toList();
           controller.addObserver(this);
@@ -101,7 +101,7 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
                       : null,
                 ),
                 SizedBox(height: 20),
-                Text(workout.name!,
+                Text(workout.name,
                     style: Theme.of(context).textTheme.headlineMedium),
                 SizedBox(
                   height: 300,
@@ -121,14 +121,11 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
                         LineChartBarData(
                           spots: workout.data!.details!.points
                               .where((e) =>
-                                  e.distance != null &&
-                                  e.duration != null &&
-                                  e.distance! / (e.duration! / 1000000000) >=
-                                      1.0)
+                                  e.distance / (e.duration / 1000000000) >= 1.0)
                               .map((e) => FlSpot(
-                                  e.totalDistance!,
-                                  (e.distance! /
-                                              (e.duration! / 1000000000) *
+                                  e.totalDistance,
+                                  (e.distance /
+                                              (e.duration / 1000000000) *
                                               3.6 *
                                               10)
                                           .roundToDouble() /
@@ -140,8 +137,7 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen>
                         ),
                         LineChartBarData(
                           spots: workout.data!.details!.points
-                              .map(
-                                  (e) => FlSpot(e.totalDistance!, e.elevation!))
+                              .map((e) => FlSpot(e.totalDistance, e.elevation))
                               .toList(),
                           isCurved: true,
                           color: Colors.green,

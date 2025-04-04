@@ -34,8 +34,7 @@ abstract class Workout with _$Workout {
     required String name,
 
     /* The notes associated with the workout, in markdown */
-    @Default('')
-    String notes,
+    @Default('') String notes,
 
     /* UUID to publicly share a workout - this UUID can be rotated */
     String? publicUUID,
