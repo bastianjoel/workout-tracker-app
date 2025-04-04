@@ -49,7 +49,7 @@ class HomeViewModel extends ChangeNotifier {
     int steps = await Pedometer().getStepCount(from: startOfDay, to: endOfDay);
     todaySteps = steps.toString();
     notifyListeners();
-    if (steps != measurement?.steps) {
+    if (steps > (measurement?.steps ?? 0)) {
       await _measurementRepository.setSteps(steps: steps);
     }
 
