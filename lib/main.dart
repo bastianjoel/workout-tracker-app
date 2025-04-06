@@ -1,14 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:workout_tracker_app/config/dependencies.dart';
 import 'package:workout_tracker_app/routing/router.dart';
 import 'package:workout_tracker_app/ui/core/themes/theme.dart';
 
 void main() {
-  runApp(MultiProvider(providers: providersRemote, child: const MainApp()));
+  Intl.defaultLocale = Platform.localeName;
+  initializeDateFormatting(Platform.localeName, null).then((_) => {
+    runApp(MultiProvider(providers: providersRemote, child: const MainApp()))
+  });
 }
 
 class MainApp extends StatelessWidget {

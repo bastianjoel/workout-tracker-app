@@ -40,7 +40,7 @@ class WorkoutListTile extends StatelessWidget {
                   children: [
                     Icon(Icons.event),
                     SizedBox(width: 5),
-                    Text(DateFormat.yMd().format(workout.date)),
+                    Text(DateFormat.yMd().format(workout.date.toLocal())),
                   ],
                 ),
                 SizedBox(height: 2),
@@ -49,7 +49,7 @@ class WorkoutListTile extends StatelessWidget {
                     Icon(Icons.arrow_right_alt),
                     SizedBox(width: 5),
                     Text(
-                        '${((workout.data?.totalDistance ?? 0) / 1000).toStringAsFixed(2)} km'),
+                        '${NumberFormat("#.##").format((workout.data?.totalDistance ?? 0) / 1000)} km'),
                   ],
                 ),
               ],
