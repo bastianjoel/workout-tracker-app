@@ -14,8 +14,9 @@ import 'package:workout_tracker_app/ui/core/themes/theme.dart';
 void main() {
   Intl.defaultLocale = Platform.localeName;
   initializeDateFormatting(Platform.localeName, null).then((_) => {
-    runApp(MultiProvider(providers: providersRemote, child: const MainApp()))
-  });
+        runApp(
+            MultiProvider(providers: providersRemote, child: const MainApp()))
+      });
 }
 
 class MainApp extends StatelessWidget {

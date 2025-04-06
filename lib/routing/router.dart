@@ -19,93 +19,93 @@ import '../ui/auth/login/widgets/login_screen.dart';
 import 'routes.dart';
 
 final router = GoRouter(
-      // debugLogDiagnostics: true,
-      initialLocation: Routes.home,
-      redirect: _redirect,
-      routes: [
-        GoRoute(
-          path: Routes.login,
-          builder: (context, state) {
-            return LoginScreen(
-                viewModel: LoginViewModel(authRepository: context.read()));
-          },
-        ),
-        StatefulShellRoute.indexedStack(
-          branches: [
-            StatefulShellBranch(routes: [
+  // debugLogDiagnostics: true,
+  initialLocation: Routes.home,
+  redirect: _redirect,
+  routes: [
+    GoRoute(
+      path: Routes.login,
+      builder: (context, state) {
+        return LoginScreen(
+            viewModel: LoginViewModel(authRepository: context.read()));
+      },
+    ),
+    StatefulShellRoute.indexedStack(
+      branches: [
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: Routes.home,
+            builder: (context, state) {
+              return HomeScreen(
+                viewModel: HomeViewModel(
+                  authRepository: context.read(),
+                  measurementRepository: context.read(),
+                ),
+              );
+            },
+          )
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+            path: Routes.workouts,
+            builder: (context, state) {
+              return WorkoutListScreen(
+                viewModel: WorkoutListViewModel(
+                  workoutRepository: context.read(),
+                ),
+              );
+            },
+            routes: [
               GoRoute(
-                path: Routes.home,
+                path: ':id',
                 builder: (context, state) {
-                  return HomeScreen(
-                    viewModel: HomeViewModel(
-                      authRepository: context.read(),
-                      measurementRepository: context.read(),
-                    ),
+                  final id = int.parse(state.pathParameters['id']!);
+                  final workoutDetailViewModel = WorkoutDetailViewModel(
+                    workoutRepository: context.read(),
+                  );
+
+                  workoutDetailViewModel.loadWorkout.execute(id);
+
+                  return WorkoutDetailScreen(
+                    viewModel: workoutDetailViewModel,
                   );
                 },
               )
-            ]),
-            StatefulShellBranch(routes: [
-              GoRoute(
-                path: Routes.workouts,
-                builder: (context, state) {
-                  return WorkoutListScreen(
-                    viewModel: WorkoutListViewModel(
-                      workoutRepository: context.read(),
-                    ),
-                  );
-                },
-                routes: [
-                  GoRoute(
-                    path: ':id',
-                    builder: (context, state) {
-                      final id = int.parse(state.pathParameters['id']!);
-                      final workoutDetailViewModel = WorkoutDetailViewModel(
-                        workoutRepository: context.read(),
-                      );
-
-                      workoutDetailViewModel.loadWorkout.execute(id);
-
-                      return WorkoutDetailScreen(
-                        viewModel: workoutDetailViewModel,
-                      );
-                    },
-                  )
-                ],
-              ),
-            ]),
-            StatefulShellBranch(routes: [
-              GoRoute(
-                  path: Routes.record,
-                  builder: (context, state) {
-                    return RecordingScreen();
-                  }),
-            ]),
-            StatefulShellBranch(routes: [
-              GoRoute(
-                  path: Routes.stats,
-                  builder: (context, state) {
-                    return StatisticOverviewScreen();
-                  }),
-            ]),
-            StatefulShellBranch(routes: [
-              GoRoute(
-                  path: Routes.settings,
-                  builder: (context, state) {
-                    return SettingsScreen(
-                      viewModel: SettingsViewModel(
-                        authRepository: context.read(),
-                      ),
-                    );
-                  }),
-            ]),
-          ],
-          builder: (context, state, navigationShell) {
-            return MainScaffold(navigationShell);
-          },
-        ),
+            ],
+          ),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+              path: Routes.record,
+              builder: (context, state) {
+                return RecordingScreen();
+              }),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+              path: Routes.stats,
+              builder: (context, state) {
+                return StatisticOverviewScreen();
+              }),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(
+              path: Routes.settings,
+              builder: (context, state) {
+                return SettingsScreen(
+                  viewModel: SettingsViewModel(
+                    authRepository: context.read(),
+                  ),
+                );
+              }),
+        ]),
       ],
-    );
+      builder: (context, state, navigationShell) {
+        return MainScaffold(navigationShell);
+      },
+    ),
+  ],
+);
 
 Future<String?> _redirect(BuildContext context, GoRouterState state) async {
   final loggedIn = await context.read<AuthRepository>().isAuthenticated;

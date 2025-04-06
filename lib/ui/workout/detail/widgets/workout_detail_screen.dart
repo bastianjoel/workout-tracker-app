@@ -74,7 +74,8 @@ class _WorkoutDetailScreenState extends State<WorkoutDetailScreen> {
               if (workout.data?.details != null) {
                 widgets.add(SizedBox(
                   height: 300,
-                  child: WorkoutDetailChart(workoutDetails: workout.data!.details!),
+                  child: WorkoutDetailChart(
+                      workoutDetails: workout.data!.details!),
                 ));
                 widgets.add(SizedBox(height: 16));
               }

@@ -156,7 +156,7 @@ class ApiClient {
       if (response.statusCode == 200) {
         final stringData = await response.transform(utf8.decoder).join();
         final apiResponse = ApiResponse.fromJson<User, dynamic>(
-        jsonDecode(stringData), (json) => User.fromJson(json));
+            jsonDecode(stringData), (json) => User.fromJson(json));
         try {
           final data = apiResponse.getOrThrow();
           return Success(data);

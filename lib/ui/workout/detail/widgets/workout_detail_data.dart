@@ -67,7 +67,8 @@ class WorkoutDetailData extends StatelessWidget {
         items.add(_WorkoutDetailListItem(
           icon: const Icon(Icons.arrow_right_alt),
           label: AppLocalizations.of(context)!.total_distance,
-          text: '${NumberFormat("#.##").format((data.totalDistance) / 1000)} km',
+          text:
+              '${NumberFormat("#.##").format((data.totalDistance) / 1000)} km',
         ));
       }
 
@@ -75,7 +76,8 @@ class WorkoutDetailData extends StatelessWidget {
         items.add(_WorkoutDetailListItem(
           icon: const Icon(Icons.speed),
           label: AppLocalizations.of(context)!.average_speed,
-          text: '${NumberFormat("#.##").format((data.averageSpeed) * 3.6)} km/h',
+          text:
+              '${NumberFormat("#.##").format((data.averageSpeed) * 3.6)} km/h',
         ));
       }
 
@@ -83,7 +85,8 @@ class WorkoutDetailData extends StatelessWidget {
         items.add(_WorkoutDetailListItem(
           icon: const Icon(Icons.speed),
           label: AppLocalizations.of(context)!.average_speed_no_pause,
-          text: '${NumberFormat("#.##").format((data.averageSpeedNoPause) * 3.6)} km/h',
+          text:
+              '${NumberFormat("#.##").format((data.averageSpeedNoPause) * 3.6)} km/h',
         ));
       }
 
@@ -143,14 +146,12 @@ class WorkoutDetailData extends StatelessWidget {
         widgets.add(Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                item.icon,
-                SizedBox(width: 8),
-                Text(item.label),
-                SizedBox(width: 8),
-              ]
-            ),
+            Row(children: [
+              item.icon,
+              SizedBox(width: 8),
+              Text(item.label),
+              SizedBox(width: 8),
+            ]),
             Spacer(),
             Text(item.text),
           ],
@@ -159,25 +160,28 @@ class WorkoutDetailData extends StatelessWidget {
       }
     }
 
-    return Padding(padding: EdgeInsets.all(16), child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(workout.name, style: Theme.of(context).textTheme.headlineMedium),
-        SizedBox(height: 8),
-        Row(
+    return Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(workout.type.icon),
-            SizedBox(width: 8),
-            Text(DateFormat.yMMMMd().format(workout.date.toLocal())),
-            Text(' - '),
-            Text(DateFormat.jm().format(workout.date.toLocal())),
+            Text(workout.name,
+                style: Theme.of(context).textTheme.headlineMedium),
+            SizedBox(height: 8),
+            Row(
+              children: [
+                Icon(workout.type.icon),
+                SizedBox(width: 8),
+                Text(DateFormat.yMMMMd().format(workout.date.toLocal())),
+                Text(' - '),
+                Text(DateFormat.jm().format(workout.date.toLocal())),
+              ],
+            ),
+            SizedBox(height: 24),
+            ...widgets,
           ],
-        ),
-        SizedBox(height: 24),
-        ...widgets,
-      ],
-    ));
+        ));
   }
 }
 

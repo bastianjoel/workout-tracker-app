@@ -11,7 +11,8 @@ class WorkoutDetailMap extends StatefulWidget {
   State<WorkoutDetailMap> createState() => _WorkoutDetailMapState();
 }
 
-class _WorkoutDetailMapState extends State<WorkoutDetailMap> with OSMMixinObserver {
+class _WorkoutDetailMapState extends State<WorkoutDetailMap>
+    with OSMMixinObserver {
   List<GeoPoint> workoutPath = [];
   late MapController mapController;
   String? _roadKey;
