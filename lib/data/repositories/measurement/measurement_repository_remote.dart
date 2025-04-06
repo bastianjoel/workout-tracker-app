@@ -41,7 +41,25 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
     DateTime? startDate,
     DateTime? endDate,
   }) async {
-    return Failure(Exception('Not implemented'));
+    if (_cachedMeasurements == null) {
+      final result = await updateMeasurements();
+      if (result.isError()) {
+        return Failure(Exception('Failed to fetch measurements'));
+      }
+    }
+
+    final measurements = _cachedMeasurements!
+        .where((element) {
+          DateTime measurementDate = DateTime.parse(element.date);
+          return (startDate == null || measurementDate.isAfter(startDate)) &&
+              (endDate == null ||
+                  measurementDate.isBefore(endDate.add(Duration(hours: 23))));
+        })
+        .toList()
+        .reversed
+        .toList();
+
+    return measurements.toSuccess();
   }
 
   @override

@@ -27,5 +27,6 @@
   "equipment": "Equipment",
   "extra_metrics": "Extra metrics",
   "total_repetitions": "Total repetitions",
-  "total_weight": "Total weight"
+  "total_weight": "Total weight",
+  "steps": "Steps"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 
 class RecordingScreen extends StatefulWidget {
   const RecordingScreen({super.key});
@@ -10,6 +11,8 @@ class RecordingScreen extends StatefulWidget {
 }
 
 class _RecordingScreenState extends State<RecordingScreen> {
+  final Location location = Location();
+
   @override
   void initState() {
     super.initState();
