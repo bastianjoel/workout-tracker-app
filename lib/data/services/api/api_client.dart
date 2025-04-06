@@ -155,12 +155,10 @@ class ApiClient {
       final response = await request.close();
       if (response.statusCode == 200) {
         final stringData = await response.transform(utf8.decoder).join();
-        // TODO: Change if api is fixed
-        // final apiResponse = ApiResponse.fromJson<User, dynamic>(
-        // jsonDecode(stringData), (json) => User.fromJson(json));
+        final apiResponse = ApiResponse.fromJson<User, dynamic>(
+        jsonDecode(stringData), (json) => User.fromJson(json));
         try {
-          // final data = apiResponse.getOrThrow();
-          final data = User.fromJson(jsonDecode(stringData));
+          final data = apiResponse.getOrThrow();
           return Success(data);
         } on Exception catch (e) {
           return Failure(e);
