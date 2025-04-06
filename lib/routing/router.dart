@@ -18,11 +18,10 @@ import '../data/repositories/auth/auth_repository.dart';
 import '../ui/auth/login/widgets/login_screen.dart';
 import 'routes.dart';
 
-GoRouter router(AuthRepository authRepository) => GoRouter(
+final router = GoRouter(
       // debugLogDiagnostics: true,
       initialLocation: Routes.home,
       redirect: _redirect,
-      refreshListenable: authRepository,
       routes: [
         GoRoute(
           path: Routes.login,
