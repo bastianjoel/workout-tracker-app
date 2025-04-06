@@ -43,7 +43,7 @@ class WorkoutDetailData extends StatelessWidget {
         items.add(_WorkoutDetailListItem(
           icon: const Icon(Icons.fitness_center),
           label: AppLocalizations.of(context)!.total_weight,
-          text: '${NumberFormat("#.##").format((data.totalWeight) / 1000)} kg',
+          text: '${NumberFormat("#.##").format(data.totalWeight)} kg',
         ));
       }
 
