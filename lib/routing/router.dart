@@ -40,6 +40,7 @@ final router = GoRouter(
                 viewModel: HomeViewModel(
                   authRepository: context.read(),
                   measurementRepository: context.read(),
+                  sharedPreferencesService: context.read(),
                 ),
               );
             },

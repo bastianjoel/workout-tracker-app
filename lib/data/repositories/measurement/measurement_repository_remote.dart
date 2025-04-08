@@ -12,10 +12,12 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
   final ApiClient _apiClient;
 
   List<Measurement>? _cachedMeasurements;
+  DateTime? _lastUpdate;
 
   @override
   Future<Result<Measurement>> getMeasurement({required DateTime date}) async {
-    if (_cachedMeasurements == null) {
+    if (_cachedMeasurements == null ||
+        (DateTime.now().difference(_lastUpdate!).inMinutes > 5)) {
       final result = await updateMeasurements();
       if (result.isError()) {
         return Failure(Exception('Failed to fetch measurements'));
@@ -41,7 +43,8 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
     DateTime? startDate,
     DateTime? endDate,
   }) async {
-    if (_cachedMeasurements == null) {
+    if (_cachedMeasurements == null ||
+        DateTime.now().difference(_lastUpdate!).inMinutes > 5) {
       final result = await updateMeasurements();
       if (result.isError()) {
         return Failure(Exception('Failed to fetch measurements'));
@@ -68,6 +71,7 @@ class MeasurementRepositoryRemote implements MeasurementRepository {
     try {
       final response = result.getOrThrow();
       _cachedMeasurements = response;
+      _lastUpdate = DateTime.now();
       return Success(0);
     } on Exception catch (e) {
       return Failure(e);

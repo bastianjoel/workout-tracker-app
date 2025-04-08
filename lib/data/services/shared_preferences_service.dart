@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesService {
   static const _baseUrl = 'BASE_URL';
   static const _apiKey = 'API_KEY';
+  static const _syncPedometer = 'SYNC_PEDOMETER';
 
   Future<void> setUrl(String? value) async {
     final prefs = await SharedPreferences.getInstance();
@@ -30,5 +31,15 @@ class SharedPreferencesService {
   Future<String?> getApiKey() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_apiKey);
+  }
+
+  Future<void> setSyncPedometer(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_syncPedometer, value);
+  }
+
+  Future<bool> getSyncPedometer() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_syncPedometer) ?? true;
   }
 }
