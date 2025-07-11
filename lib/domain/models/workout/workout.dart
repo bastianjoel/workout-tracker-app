@@ -9,8 +9,13 @@ part 'workout.g.dart';
 @freezed
 abstract class Workout with _$Workout {
   const factory Workout({
+    @JsonKey(name: 'ID')
     int? id,
+
+    @JsonKey(name: 'CreatedAt')
     String? createdAt,
+
+    @JsonKey(name: 'UpdatedAt')
     String? updatedAt,
 
     /* The ID of the user who owns the workout */

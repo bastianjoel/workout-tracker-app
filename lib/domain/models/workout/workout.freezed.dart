@@ -15,8 +15,11 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$Workout {
+  @JsonKey(name: 'ID')
   int? get id;
+  @JsonKey(name: 'CreatedAt')
   String? get createdAt;
+  @JsonKey(name: 'UpdatedAt')
   String? get updatedAt; /* The ID of the user who owns the workout */
   int get userID; /* The map data associated with the workout */
   MapData? get data; /* The timestamp the workout was recorded */
@@ -95,9 +98,9 @@ abstract mixin class $WorkoutCopyWith<$Res> {
       _$WorkoutCopyWithImpl;
   @useResult
   $Res call(
-      {int? id,
-      String? createdAt,
-      String? updatedAt,
+      {@JsonKey(name: 'ID') int? id,
+      @JsonKey(name: 'CreatedAt') String? createdAt,
+      @JsonKey(name: 'UpdatedAt') String? updatedAt,
       int userID,
       MapData? data,
       DateTime date,
@@ -207,9 +210,9 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
 @JsonSerializable()
 class _Workout implements Workout {
   const _Workout(
-      {this.id,
-      this.createdAt,
-      this.updatedAt,
+      {@JsonKey(name: 'ID') this.id,
+      @JsonKey(name: 'CreatedAt') this.createdAt,
+      @JsonKey(name: 'UpdatedAt') this.updatedAt,
       required this.userID,
       this.data,
       required this.date,
@@ -224,10 +227,13 @@ class _Workout implements Workout {
       _$WorkoutFromJson(json);
 
   @override
+  @JsonKey(name: 'ID')
   final int? id;
   @override
+  @JsonKey(name: 'CreatedAt')
   final String? createdAt;
   @override
+  @JsonKey(name: 'UpdatedAt')
   final String? updatedAt;
 /* The ID of the user who owns the workout */
   @override
@@ -338,9 +344,9 @@ abstract mixin class _$WorkoutCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? createdAt,
-      String? updatedAt,
+      {@JsonKey(name: 'ID') int? id,
+      @JsonKey(name: 'CreatedAt') String? createdAt,
+      @JsonKey(name: 'UpdatedAt') String? updatedAt,
       int userID,
       MapData? data,
       DateTime date,
